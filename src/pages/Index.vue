@@ -34,7 +34,7 @@ import PostCard from '~/components/PostCard'
 
 export default {
   metaInfo: {
-    title: 'Daily Cactus'
+    title: 'Welcome'
   },
   components: {
     PostCard,

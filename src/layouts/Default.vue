@@ -2,16 +2,18 @@
 <template>
   <div class="layout">
     <header class="header">
-      <g-link to="/" class="logo-wrapper">
-        <g-image src="~/images/logo.png" width="128"/>
-      </g-link>
+      <div class="wrapper">
+        <g-link to="/" class="logo-wrapper">
+          <g-image src="~/images/logo.png" width="128"/>
+        </g-link>
 
-      <nav>
-        <g-link class="tab" to="/">LATEST</g-link>
-        <g-link class="tab" to="/tag/tech"># TECH</g-link>
-        <g-link class="tab" to="/tag/misc"># MISC</g-link>
-        <g-link class="tab" to="/about">ABOUT</g-link>
-      </nav>
+        <nav>
+          <g-link class="tab" to="/">LATEST</g-link>
+          <g-link class="tab" to="/tag/tech"># TECH</g-link>
+          <g-link class="tab" to="/tag/misc"># MISC</g-link>
+          <g-link class="tab" to="/about">ABOUT</g-link>
+        </nav>
+      </div>
     </header>
 
     <slot/>
@@ -62,34 +64,46 @@
     top: 0;
     left: 0;
     right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-bottom: 1px solid $porcelain;
-    padding: 10px 10%;
+    padding: 10px 0;
+    width: 100%;
     height: 64px;
 
-    .logo-wrapper {
+    .wrapper {
       display: flex;
-      padding: 8px;
-      background-color: $watergreen;
-      border-radius: 100%;
+      align-items: center;
+      justify-content: space-between;
+      margin: auto;
+      width: 80%;
 
-      > img {
-        width: 48px
-      }
-    }
+      .logo-wrapper {
+        display: flex;
 
-    nav {
-      .tab {
-        font-weight: 500;
-        margin-right: 40px;
-        white-space: nowrap;
-
-        &:hover {
-          color: $cactusgreen
+        @media (max-width: 640px) {
+          margin: auto;
         }
-      } 
+
+        > img {
+          width: 64px;
+          border-radius: 100%;
+        }
+      }
+
+      nav {
+        @media (max-width: 640px) {
+          display: none
+        }
+
+        .tab {
+          font-weight: 500;
+          margin-right: 40px;
+          white-space: nowrap;
+
+          &:hover {
+            color: $cactusgreen
+          }
+        } 
+      }
     }
   }
 </style>

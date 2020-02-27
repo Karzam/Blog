@@ -79,7 +79,7 @@ export default {
 
   .postNumber {
     color: $midgray;
-    font-size: 14px;
+    font-size: 16px;
     margin-left: 12px;
   }
 }

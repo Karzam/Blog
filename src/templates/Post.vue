@@ -44,7 +44,7 @@ query ($id: ID!) {
 export default {
   metaInfo() {
     return {
-      title: `Daily Cactus - ${this.$page.post.title}`,
+      title: `Baptiste - ${this.$page.post.title}`,
       meta: [
         {
           name: 'description',
@@ -77,9 +77,12 @@ export default {
   line-height: 24px;
   align-items: center;
 
+  .date {
+    font-size: 16px;
+  }
+
   .tag {
     margin-right: 8px;
-    font-size: 16px;
 
     &:hover {
       color: $cactusgreen;
@@ -95,6 +98,6 @@ h1 {
   font-family: Quicksand;
   text-align: justify;
   line-height: 24px;
-  font-size: 16px;
+  font-size: 17px;
 }
 </style>

@@ -2,7 +2,7 @@
 title: Using Vue.js everyday
 date: 2019-11-27
 tags: ['tech']
-description: "Vue.js is one of the most trending frameworks. I've been using it everyday for more than one year, and it feels great. Here are some of the things I like the most with it."
+description: "Vue.js is one of the most trending frameworks. I've been using it everyday for more than one year, and it feels great. Here are some of the things I like the most with it..."
 ---
 
 Vue.js is one of the most trending frameworks. I've been using it for more than one year in my current job, and it feels great. I used to work with React & React Native, and I wanted to share my point of view and some of the things I like the most with it, compared to other frameworks, and even globally.  
