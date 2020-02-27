@@ -49,12 +49,8 @@
       display: flex;
       flex-direction: column;
 
-      @media (min-width: 768px) {
-        width: 80%;
-      }
-
-      @media (min-width: 1024px) {
-        width: 50%;
+      @media (max-width: 640px) {
+        width: 90%;
       }
     }
   }
@@ -85,6 +81,7 @@
 
         > img {
           width: 64px;
+          height: 64px;
           border-radius: 100%;
         }
       }
@@ -94,7 +91,7 @@
           display: none
         }
 
-        .tab {
+        .tab:not(:last-child) {
           font-weight: 500;
           margin-right: 40px;
           white-space: nowrap;

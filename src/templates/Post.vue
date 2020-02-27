@@ -1,25 +1,25 @@
 <template>
-  <Layout>
-    <div class="head">
-      <div class="tags">
+  <Layout :class="$style.post">
+    <div :class="$style.head">
+      <div :class="$style.tags">
         <g-link
           v-for="tag in $page.post.tags"
           :key="tag.id"
           :to="tag.path"
-          class="tag"
+          :class="$style.tag"
         >
           {{ `#${tag.title}` }}
         </g-link>
       </div>
 
-      <span class="date">{{ $page.post.date }}</span>
+      <span :class="$style.date">{{ $page.post.date }}</span>
     </div>
 
     <h1>{{ $page.post.title }}</h1>
 
-    <div v-html="$page.post.content" class="content"/>
+    <div v-html="$page.post.content" :class="$style.content"/>
 
-    <g-link to="/" class="back">
+    <g-link to="/" :class="$style.back">
       <span> &larr; Back </span>
     </g-link>
   </Layout>
@@ -56,48 +56,56 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" module>
 @import '@/styles/colors.scss';
 @import '@/styles/global.scss';
 
-.back {
-  margin: 24px 0 24px 0;
-  width: fit-content;
+  .post {
+    .back {
+      margin: 24px 0 24px 0;
+      width: fit-content;
 
-  > span {
-    color: $midgray;
+      > span {
+        color: $midgray;
 
-    &:hover {
-      color: $cactusgreen;
+        &:hover {
+          color: $cactusgreen;
+        }
+      }
+    }
+
+    .head {
+      line-height: 24px;
+      align-items: center;
+
+      .date {
+        font-size: 16px;
+      }
+
+      .tag {
+        margin-right: 8px;
+
+        &:hover {
+          color: $cactusgreen;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    .content {
+      font-family: Quicksand;
+      text-align: justify;
+      line-height: 24px;
+      font-size: 17px;
+
+      code[class*="language-"],
+      pre[class*="language-"] * {
+        font-family: "Monaco", monospace;
+        font-size: 14px !important
+      }
     }
   }
-}
-
-.head {
-  line-height: 24px;
-  align-items: center;
-
-  .date {
-    font-size: 16px;
-  }
-
-  .tag {
-    margin-right: 8px;
-
-    &:hover {
-      color: $cactusgreen;
-    }
-  }
-}
-
-h1 {
-  font-size: 36px;
-}
-
-.content {
-  font-family: Quicksand;
-  text-align: justify;
-  line-height: 24px;
-  font-size: 17px;
-}
 </style>
