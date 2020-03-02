@@ -4,7 +4,7 @@
     <header class="header">
       <div class="wrapper">
         <button
-          v-if="isMobile"
+          v-show="isMobile"
           class="mobileButton"
           @click="onClickMenu"
         >
@@ -31,11 +31,10 @@
     </header>
 
     <MobileMenu
-      v-show="isMenuOpened"
+      v-if="isMenuOpened"
       @input="onClickMenu"
     />
-
-    <slot />
+    <slot v-else />
   </div>
 </template>
 
