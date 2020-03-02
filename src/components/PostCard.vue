@@ -34,10 +34,6 @@ export default {
 @import '@/styles/colors.scss';
 @import '@/styles/global.scss';
 
-.darkmode--activated .title:hover {
-  isolation: isolate
-}
-
 .post-card {
   display: flex;
   flex-direction: column;
