@@ -55,9 +55,9 @@
     },
     computed: {
       isMobile() {
-        if (!process.isClient) return
+        if (!process || !process.isClient) return
 
-        if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if (navigator && /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
           return true
         } else {
           return false

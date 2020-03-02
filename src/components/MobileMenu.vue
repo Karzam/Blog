@@ -14,7 +14,7 @@
   export default {
     methods: {
       onClick(route) {
-        if (this.$route.path != route) {
+        if (this.$route && this.$route.path != route) {
           this.$router.push({ path: route })  
         }
         this.$emit('input')
