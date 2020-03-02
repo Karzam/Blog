@@ -31,10 +31,11 @@
     </header>
 
     <MobileMenu
-      v-if="isMenuOpened"
+      v-show="isMenuOpened"
       @input="onClickMenu"
     />
-    <slot v-else />
+
+    <slot />
   </div>
 </template>
 
