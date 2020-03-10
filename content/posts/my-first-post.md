@@ -1,6 +1,6 @@
 ---
 title: Finally deployed!
-date: 2019-11-25
+date: 2020-02-25
 tags: ['misc']
 description: "Welcome to my new site! I've been working on this one for a while, step by step, taking my time (maybe too much). This post has been made to 'inaugurate' this place, and to explain why I intended to make it..."
 ---

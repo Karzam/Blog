@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="about">
-      <g-image class="me" src="~/images/me.jpg" width="256"/>
+      <g-image class="me" src="~/images/me.jpg" alt="me" width="256"/>
 
       <div class="links">
         <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>

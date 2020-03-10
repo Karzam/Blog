@@ -104,7 +104,11 @@ export default {
       code[class*="language-"],
       pre[class*="language-"] * {
         font-family: "Monaco", monospace;
-        font-size: 14px !important
+        font-size: 14px !important;
+      }
+
+      img {
+        width: 100%;
       }
     }
   }

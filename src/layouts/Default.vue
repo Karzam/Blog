@@ -12,12 +12,13 @@
         </button>
 
         <g-link to="/" class="logo-wrapper">
-          <g-image src="~/images/logo.png" width="128"/>
+          <g-image src="~/images/logo.png" width="128" alt="logo"/>
         </g-link>
 
         <nav>
           <g-link class="tab" to="/">LATEST</g-link>
           <g-link class="tab" to="/tag/tech"># TECH</g-link>
+          <g-link class="tab" to="/tag/tutorial"># TUTORIAL</g-link>
           <g-link class="tab" to="/tag/misc"># MISC</g-link>
           <g-link class="tab" to="/about">ABOUT</g-link>
 

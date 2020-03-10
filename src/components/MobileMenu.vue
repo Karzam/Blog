@@ -4,6 +4,8 @@
     <hr/>
     <button @click="onClick('/tag/tech')"><span># TECH</span><span>></span></button>
     <hr/>
+    <button @click="onClick('/tag/tutorial')"><span># TUTORIAL</span><span>></span></button>
+    <hr/>
     <button @click="onClick('/tag/misc')"><span># MISC</span><span>></span></button>
     <hr/>
     <button @click="onClick('/about')"><span>ABOUT</span><span>></span></button>
