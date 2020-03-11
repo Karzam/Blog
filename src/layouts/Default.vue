@@ -44,7 +44,7 @@
 
   export default {
     metaInfo: {
-      title: 'About me'
+      title: 'Welcome'
     },
     components: {
       MobileMenu,
