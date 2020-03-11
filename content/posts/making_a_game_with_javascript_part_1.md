@@ -2,12 +2,12 @@
 title: "Making a game with Javascript: Part 1"
 date: 2020-03-09
 tags: ['tech', 'tutorial']
-description: "The first part of my tutorial to make a shoot'em up game with Javascript and Pixi.js..."
+description: "I wrote a shoot'em up tutorial few years ago that got published on Medium and Hackernoon, and got read by lot of people, but something itches a lot : it's old now!..."
 ---
 
 ![alt text](https://hackernoon.com/hn-images/1*d6LciqpRc7XxOV_kCOU_NQ.png "The final result")
 
-Hi everyone, I wrote a shoot'em up tutorial few years ago that got published on Medium and Hackernoon, and got read by a lot of people,
+Hi everyone, I wrote a shoot'em up tutorial few years ago that got published on Medium and Hackernoon, and got read by lot of people,
 but something itches a lot : it's old now! I was a very young developer at that time, and I just wanted to rewrite it with a better code quality, and new development tools (for example, using a webpack dev-server instead of Mamp).
 
 It's was also not completely finished, as there were no enemies (only a flying / firing ship between moving clouds) so this time I will go much further in the gameplay.
@@ -103,7 +103,7 @@ export default class CloudManager
    * Randomly compute cloud entity position, scale and texture
    */
   reset(element) {
-    const { width, height } = window.screen
+    const { innerWidth, innerHeight } = window
     
     // Select texture randomly
     const texture = Math.random() > 0.5 ? "cloud_1" : "cloud_2";
@@ -111,7 +111,7 @@ export default class CloudManager
     // Set texture, anchor and position
     element.texture = Loader.shared.resources["assets/" + texture + ".png"].texture;
     element.anchor.set(0.5, 0.5);
-    element.position.set(width + (width * Math.random(), height * Math.random());
+    element.position.set(innerWidth + (innerWidth * Math.random(), innerHeight * Math.random());
 
     // Diversify clouds size
     const scale = Math.random() * 1 + 0.1;
@@ -155,8 +155,8 @@ Next step: to import the cloud sprites, and instantiate the game's CloudManager 
 
 You can download the 2 textures in the links just below, and them to your `build/assets` folder (image previews are invisible on Github because they are white):
 
-https://github.com/Karzam/Spaceship_Tutorial_Part_1/blob/master/bin/assets/cloud_1.png
-https://github.com/Karzam/Spaceship_Tutorial_Part_1/blob/master/bin/assets/cloud_2.png
+https://github.com/Karzam/Spaceship_Tutorial_Part_1/blob/master/build/assets/cloud_1.png
+https://github.com/Karzam/Spaceship_Tutorial_Part_1/blob/master/build/assets/cloud_2.png
 
 Then, we have to tell Pixi to load these images before initializing the game. So update the `loader.add` method in `index.js` with the texture paths:
 
@@ -221,4 +221,7 @@ And if you have any questions, you can reach me at `bapmenard@gmail.com`
 
 In the next part, we'll add the player spaceship, making it move and shoot.
 
-Thanks for reading!
+Thanks for reading!  
+
+
+

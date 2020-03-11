@@ -108,7 +108,9 @@ export default {
       }
 
       img {
-        width: 100%;
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
       }
     }
   }
