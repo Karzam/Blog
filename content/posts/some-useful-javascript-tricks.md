@@ -2,10 +2,11 @@
 title: Some useful ES6 tricks
 date: 2020-03-12
 tags: ['tech']
-description: "When it comes to writing Javascript, there are some tricks very useful to make your code simple and easily readable. I wrote this post to talk about some of them, probably the ones I use the most in my job and personal projects...."
+description: "When it comes to writing Javascript, there are some tricks very useful to make your code easily readable. I wrote this post to talk about some of them, probably the ones I use the most..."
 ---
 
 When it comes to writing Javascript, there are some tricks very useful to make your code simple and easily readable.  
+
 I wrote this post to talk about some of them, probably the ones I use the most in my job and personal projects.
 
 ### Conditionally add properties to an object
@@ -69,7 +70,7 @@ const animal = dinosaur || '🐦'
 
 Javascript is parsing values from left to right, and assign the first value that is not falsy.
 
-*Note: using a short-circuit evaluation can be dangerous if the first value is 0 or an empty string '', as they are considered as falsy values.*
+*Note: using a short-circuit evaluation can be dangerous if the first value is 0 or an empty string, as they are considered as falsy values.*
 
 Considering this, it's a not a good idea to use it on function parameters... Better use the default parameter value:
 
