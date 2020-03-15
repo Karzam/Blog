@@ -1,20 +1,19 @@
 
 <template>
-  <div :class="$style.default">
-    <div :class="$style.content">
-      <header :class="$style.header">
+  <div class="default">
+    <div class="content">
+      <header class="header">
         <div
           v-show="isMobile"
-          :key="$style.mobileWrapper"
-          :class="$style.mobileWrapper"
+          class="mobileWrapper"
         >
-          <g-link :class="$style.tab" to="/about">ABOUT</g-link>
+          <g-link class="tab" to="/about">ABOUT</g-link>
 
-          <g-link to="/" :class="$style.logoWrapper">
+          <g-link to="/" class="logoWrapper">
             <g-image src="~/images/logo.png" width="128" alt="logo"/>
           </g-link>
 
-          <div :class="$style.socials">
+          <div class="socials">
             <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
             <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
             <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
@@ -23,20 +22,19 @@
 
         <div
           v-show="!isMobile"
-          :key="$style.wrapper"
-          :class="$style.wrapper"
+          class="wrapper"
         >
-          <g-link to="/" :class="$style.logoWrapper">
+          <g-link to="/" class="logoWrapper">
             <g-image src="~/images/logo.png" width="128" alt="logo"/>
           </g-link>
 
           <nav>
-            <g-link :class="$style.tab" to="/">LATEST</g-link>
-            <g-link :class="$style.tab" to="/tag/tech"># TECH</g-link>
-            <g-link :class="$style.tab" to="/tag/misc"># MISC</g-link>
-            <g-link :class="$style.tab" to="/about">ABOUT</g-link>
+            <g-link class="tab" to="/">LATEST</g-link>
+            <g-link class="tab" to="/tag/tech"># TECH</g-link>
+            <g-link class="tab" to="/tag/misc"># MISC</g-link>
+            <g-link class="tab" to="/about">ABOUT</g-link>
 
-            <div :class="$style.socials">
+            <div class="socials">
               <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
               <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
               <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
@@ -69,7 +67,7 @@
   }
 </script>
 
-<style lang="scss" module>
+<style lang="scss" scoped>
   @import '@/styles/colors.scss';
   @import '@/styles/global.scss';
 

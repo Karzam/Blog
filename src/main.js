@@ -8,6 +8,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 
 require("gridsome-plugin-remark-prismjs-all/themes/tomorrow.css")
 
+import './styles/global.scss'
+
 config.autoAddCss = false
 library.add(faGithub, faLinkedinIn, faDev)
 
@@ -15,10 +17,6 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   head.link.push({
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css?family=Quicksand:400,500&display=swap'
-  })
-  head.link.push({
-    rel: 'stylesheet',
-    href: './styles/global.scss'
   })
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
