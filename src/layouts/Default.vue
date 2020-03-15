@@ -1,6 +1,6 @@
 
 <template>
-  <div :class="[$style.default, $style.dark]">
+  <div :class="$style.default">
     <div :class="$style.content">
       <header :class="$style.header">
         <div
@@ -98,28 +98,36 @@
   }
 
   .default {
-    height: -webkit-fill-available;
-    display: table;
+    background-color: $darkgreen;
 
-    &.dark {
-      background-color: $darkgreen;
+    .content {
+      .wrapper, .mobileWrapper {
+        .tab {
+          color: $porcelain;
 
-      .content {
-        .wrapper, .mobileWrapper {
-          .tab {
-            color: $porcelain;
+          &:hover {
+            color: $cactusgreen;
           }
+        }
 
-          .socials svg {
-            color: $porcelain;
+        .socials svg {
+          color: $porcelain;
+
+          &:hover {
+            color: $cactusgreen;
           }
-          
-          .logoWrapper img {
-            border: 2px solid $porcelain;
-          }
+        }
+        
+        .logoWrapper img {
+          border: 2px solid $porcelain;
         }
       }
     }
+  }
+
+  .default {
+    height: -webkit-fill-available;
+    display: table;
 
     .content {
       flex: 1 1 auto;
