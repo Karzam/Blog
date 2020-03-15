@@ -1,6 +1,6 @@
 
 <template>
-  <div :class="[$style.default, theme === 'dark' ? $style.dark : null]">
+  <div :class="[$style.default, $style.dark]">
     <div :class="$style.content">
       <header :class="$style.header">
         <div
@@ -191,7 +191,7 @@
           align-items: center;
 
           @media (max-width: 640px) {
-            display: none
+            display: none;
           }
 
           .tab {
