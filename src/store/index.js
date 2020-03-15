@@ -4,9 +4,25 @@ const Theme = {
   LIGHT: 'light',
 }
 
+const getSavedTheme = () => {
+  if (!process || !process.isClient) {
+    return Theme.LIGHT
+  }
+
+  return localStorage.getItem(LOCAL_THEME) || Theme.DARK
+}
+
+const saveTheme = (theme) => {
+  if (!process || !process.isClient) {
+    return Theme.LIGHT
+  }
+
+  return localStorage.setItem(LOCAL_THEME, theme)
+}
+
 export default {
   state: {
-    theme: localStorage.getItem(LOCAL_THEME) || Theme.DARK
+    theme: getSavedTheme(),
   },
   getters: {
     theme(state) {
@@ -21,11 +37,11 @@ export default {
   mutations: {
     switchTheme(state) {
       if (state.theme === Theme.DARK) {
-        localStorage.setItem(LOCAL_THEME, Theme.LIGHT)
+        saveTheme(Theme.LIGHT)
         return state.theme = Theme.LIGHT
       }
 
-      localStorage.setItem(LOCAL_THEME, Theme.DARK)
+      saveTheme(Theme.DARK)
       state.theme = Theme.DARK
     }
   },
