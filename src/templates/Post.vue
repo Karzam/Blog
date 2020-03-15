@@ -41,24 +41,23 @@ query ($id: ID!) {
 </page-query>
 
 <script>
-export default {
-  metaInfo() {
-    return {
-      title: `Baptiste - ${this.$page.post.title}`,
-      meta: [
-        {
-          name: 'description',
-          content: this.$page.post.description
-        }
-      ]
+  export default {
+    metaInfo() {
+      return {
+        title: `Baptiste - ${this.$page.post.title}`,
+        meta: [
+          {
+            name: 'description',
+            content: this.$page.post.description
+          }
+        ]
+      }
     }
-  },
-}
+  }
 </script>
 
 <style lang="scss" module>
-@import '@/styles/colors.scss';
-@import '@/styles/global.scss';
+  @import '@/styles/colors.scss';
 
   .post {
     .back {
@@ -66,7 +65,7 @@ export default {
       width: fit-content;
 
       > span {
-        color: $midgray;
+        color: $watergreen;
 
         &:hover {
           color: $cactusgreen;
@@ -80,10 +79,12 @@ export default {
 
       .date {
         font-size: 16px;
+        color: $porcelain;
       }
 
       .tag {
         margin-right: 8px;
+        color: $watergreen;
 
         &:hover {
           color: $cactusgreen;
@@ -93,6 +94,7 @@ export default {
 
     h1 {
       font-size: 36px;
+      color: $porcelain;
     }
 
     .content {
@@ -100,6 +102,7 @@ export default {
       text-align: justify;
       line-height: 24px;
       font-size: 17px;
+      color: $porcelain;
 
       code[class*="language-"],
       pre[class*="language-"] * {
@@ -111,6 +114,15 @@ export default {
         display: block;
         margin: 0 auto;
         max-width: 100%;
+      }
+
+      a {
+        word-break: break-word;
+        color: $watergreen;
+
+        &:hover {
+          color: $cactusgreen;
+        }
       }
     }
   }

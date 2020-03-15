@@ -1,8 +1,8 @@
 <template>
-  <Layout>
-    <div class="head">
-      <span class="tag">{{ `#${$page.tag.title}` }}</span>
-      <span class="postNumber">{{ formattedPostNumber }}</span>
+  <Layout :class="$style.tag">
+    <div :class="$style.head">
+      <span :class="$style.tagWord">{{ `#${$page.tag.title}` }}</span>
+      <span :class="$style.postNumber">{{ formattedPostNumber }}</span>
     </div>
 
     <PostCard
@@ -41,47 +41,48 @@ query ($id: ID!) {
 </page-query>
 
 <script>
-import PostCard from '~/components/PostCard'
+  import PostCard from '~/components/PostCard'
 
-export default {
-  metaInfo: {
-    title: 'Daily Cactus'
-  },
-  components: {
-    PostCard,
-  },
-  computed: {
-    /**
-     * Get formatted post number
-     * @type {String}
-     */
-    formattedPostNumber() {
-      const count = this.$page.tag.belongsTo.totalCount
+  export default {
+    metaInfo: {
+      title: 'Daily Cactus'
+    },
+    components: {
+      PostCard,
+    },
+    computed: {
+      /**
+       * Get formatted post number
+       * @type {String}
+       */
+      formattedPostNumber() {
+        const count = this.$page.tag.belongsTo.totalCount
 
-      return count > 1
-        ? `(${count} posts)`
-        : `(${count} post)`
+        return count > 1
+          ? `(${count} posts)`
+          : `(${count} post)`
+      }
     }
-  }
 }
 </script>
 
-<style lang="scss" scoped>
-@import '@/styles/colors.scss';
-@import '@/styles/global.scss';
-
-.head {
-  margin-bottom: 24px;
+<style lang="scss" module>
+  @import '@/styles/colors.scss';
 
   .tag {
-    font-size: 24px;
-  }
+    .head {
+      margin-bottom: 32px;
 
-  .postNumber {
-    color: $midgray;
-    font-size: 16px;
-    margin-left: 12px;
-  }
-}
+      .tagWord {
+        font-size: 24px;
+        color: $watergreen;
+      }
 
+      .postNumber {
+        color: $porcelain;
+        font-size: 16px;
+        margin-left: 12px;
+      }
+    }
+  }
 </style>

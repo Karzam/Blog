@@ -1,58 +1,57 @@
 
 <template>
-  <div class="layout">
-    <header class="header">
-      <div class="wrapper">
-        <button
+  <div class="default">
+    <div class="content">
+      <header class="header">
+        <div
           v-show="isMobile"
-          class="mobileButton"
-          @click="onClickMenu"
+          class="mobileWrapper"
         >
-          <font-awesome :icon="['fas', isMenuOpened ? 'times' : 'bars']"/>
-        </button>
-
-        <g-link to="/" class="logo-wrapper">
-          <g-image src="~/images/logo.png" width="128" alt="logo"/>
-        </g-link>
-
-        <nav>
-          <g-link class="tab" to="/">LATEST</g-link>
-          <g-link class="tab" to="/tag/tech"># TECH</g-link>
-          <g-link class="tab" to="/tag/tutorial"># TUTORIAL</g-link>
-          <g-link class="tab" to="/tag/misc"># MISC</g-link>
           <g-link class="tab" to="/about">ABOUT</g-link>
 
-          <div class="socials">
-            <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
-            <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github-square']"/></a>
-            <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin']"/></a>
-          </div>
-        </nav>
-      </div>
-    </header>
+          <g-link to="/" class="logoWrapper">
+            <g-image src="~/images/logo.png" width="128" alt="logo"/>
+          </g-link>
 
-    <MobileMenu
-      v-if="isMenuOpened"
-      @input="onClickMenu"
-    />
-    <slot v-else />
+          <div class="socials">
+            <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
+            <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
+            <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
+          </div>
+        </div>
+
+        <div
+          v-show="!isMobile"
+          class="wrapper"
+        >
+          <g-link to="/" class="logoWrapper">
+            <g-image src="~/images/logo.png" width="128" alt="logo"/>
+          </g-link>
+
+          <nav>
+            <g-link class="tab" to="/">LATEST</g-link>
+            <g-link class="tab" to="/tag/tech"># TECH</g-link>
+            <g-link class="tab" to="/tag/misc"># MISC</g-link>
+            <g-link class="tab" to="/about">ABOUT</g-link>
+
+            <div class="socials">
+              <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
+              <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
+              <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <slot />
+    </div>
   </div>
 </template>
 
 <script>
-  import MobileMenu from '~/components/MobileMenu'
-
   export default {
     metaInfo: {
       title: 'Welcome'
-    },
-    components: {
-      MobileMenu,
-    },
-    data() {
-      return {
-        isMenuOpened: false,
-      }
     },
     computed: {
       isMobile() {
@@ -63,13 +62,8 @@
         } else {
           return false
         }
-      }
-    },
-    methods: {
-      onClickMenu() {
-        this.isMenuOpened = !this.isMenuOpened
-      }
-    },
+      },
+    }
   }
 </script>
 
@@ -77,16 +71,8 @@
   @import '@/styles/colors.scss';
   @import '@/styles/global.scss';
 
-  html {
-    height: 100%;
-  }
-
-  body {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-    
-    > div {
+  .default {
+    .content {
       flex: 1 1 auto;
       padding-top: 104px;
       margin: 0 auto;
@@ -97,87 +83,106 @@
       @media (max-width: 640px) {
         width: 90%;
       }
-    }
-  }
 
-  header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-bottom: 1px solid $porcelain;
-    padding: 10px 0;
-    width: 100%;
-    height: 64px;
-
-    .wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: auto;
-      width: 80%;
-
-      .mobileButton {
+      header {
         position: absolute;
-        left: 24px;
-        top: 30px;
-        background: none;
-        border: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 10px 0;
+        width: 100%;
+        height: 64px;
 
-        svg {
-          color: $electromagnetic;
-          width: 24px;
-          height: 24px;
+        .mobileWrapper {
+          .logoWrapper > img {
+            width: 64px;
+            height: 64px;
+            border-radius: 100%;
+            margin: auto;
+          }
+
+          .tab {
+            color: $porcelain;
+            position: absolute;
+            top: 38px;
+            left: 24px;
+          }
+
+          .socials {
+            position: absolute;
+            right: 24px;
+            top: 38px;
+
+            > *:not(:last-child) {
+              margin-right: 10px;
+            }
+
+            svg {
+              color: $porcelain;
+              width: 22px;
+              height: 22px;
+
+              &:hover {
+                color: $cactusgreen;
+              }
+            }
+          }
         }
-      }
 
-      .logo-wrapper {
-        display: flex;
-
-        @media (max-width: 640px) {
+        .wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           margin: auto;
+          width: 80%;
         }
 
-        > img {
-          width: 64px;
-          height: 64px;
-          border-radius: 100%;
-        }
-      }
+        .logoWrapper {
+          display: flex;
 
-      nav {
-        display: flex;
-        align-items: center;
-
-        @media (max-width: 640px) {
-          display: none
-        }
-
-        .tab {
-          font-weight: 500;
-          white-space: nowrap;
-
-          &:not(:last-child) {
-            margin-right: 32px;
-          }
-
-          &:hover {
-            color: $cactusgreen;
+          > img {
+            width: 64px;
+            height: 64px;
+            border-radius: 100%;
+            border: 2px solid $watergreen;
           }
         }
 
-        .socials {
-          > *:not(:last-child) {
-            margin-right: 8px;
+        nav {
+          display: flex;
+          align-items: center;
+
+          @media (max-width: 640px) {
+            display: none;
           }
 
-          svg {
-            color: $midgray;
-            width: 20px;
-            height: 20px;
+          .tab {
+            font-weight: 500;
+            white-space: nowrap;
+            color: $porcelain;
+
+            &:not(:last-child) {
+              margin-right: 32px;
+            }
 
             &:hover {
               color: $cactusgreen;
+            }
+          }
+
+          .socials {
+            > *:not(:last-child) {
+              margin-right: 8px;
+            }
+
+            svg {
+              color: $porcelain;
+              width: 18px;
+              height: 18px;
+
+              &:hover {
+                color: $cactusgreen;
+              }
             }
           }
         }

@@ -38,7 +38,10 @@ many use-cases. Also, using the `v-model` directive is very clean and handy, as 
 ```html
 <CookieBox v-model="cookies" />
 <!-- instead of: -->
-<CookieBox :value="cookies" @update="newCookies => cookies = newCookies" />  
+<CookieBox
+  :value="cookies"
+  @update="newCookies => cookies = newCookies"
+/>  
 ```  
 
 ### The mixins
