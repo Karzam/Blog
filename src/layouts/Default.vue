@@ -4,7 +4,7 @@
     <div :class="$style.content">
       <header :class="$style.header">
         <div
-          v-if="isMobile"
+          v-show="isMobile"
           :key="$style.mobileWrapper"
           :class="$style.mobileWrapper"
         >
