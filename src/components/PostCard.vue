@@ -1,72 +1,87 @@
 <template>
-  <div class="post-card">
-    <div class="tags">
+  <div :class="[$style.postCard, theme === 'dark' ? $style.dark : null]">
+    <div :class="$style.tags">
       <g-link
         v-for="tag in post.tags"
         :key="tag.id"
         :to="tag.path"
-        class="tag"
+        :class="$style.tag"
       >
         {{ `#${tag.title}` }}
       </g-link>
     </div>
 
-    <g-link :to="post.path" class="title">{{ post.title }}</g-link>
+    <g-link :to="post.path" :class="$style.title">{{ post.title }}</g-link>
 
-    <span class="date">{{ post.date }}</span>
+    <span :class="$style.date">{{ post.date }}</span>
 
-    <p class="description">{{ post.description }}</p>
+    <p :class="$style.description">{{ post.description }}</p>
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    post: {
-      type: Object,
-      required: true,
+  import { mapGetters } from 'vuex'
+
+  export default {
+    props: {
+      post: {
+        type: Object,
+        required: true,
+      }
+    },
+    computed: {
+      ...mapGetters(['theme']),
     }
-  }
 }
 </script>
 
-<style lang="scss" scoped>
-@import '@/styles/colors.scss';
-@import '@/styles/global.scss';
+<style lang="scss" module>
+  @import '@/styles/colors.scss';
 
-.post-card {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 48px;
+  .postCard {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+    
+    &.dark {
+      .tag {
+        color: $watergreen;
+      }
 
-  .tag {
-    margin-right: 8px;
-    font-size: 16px;
+      .title, .date, .description {
+        color: $porcelain;
+      }
+    }
 
-    &:hover {
-      color: $cactusgreen;
+    .tag {
+      margin-right: 8px;
+      font-size: 16px;
+      color: $midgray;
+
+      &:hover {
+        color: $cactusgreen;
+      }
+    }
+
+    .title {
+      margin: 4px 0 12px 0;
+      color: $electromagnetic;
+      font-size: 32px;
+      font-weight: 500;
+
+      &:hover {
+        color: $cactusgreen;
+      }
+    }
+
+    .date {
+      font-size: 15px;
+    }
+
+    .description {
+      color: $midgray;
+      line-height: 24px;
+      font-size: 15px;
     }
   }
-
-  .title {
-    margin: 4px 0 12px 0;
-    color: $electromagnetic;
-    font-size: 32px;
-    font-weight: 500;
-
-    &:hover {
-      color: $cactusgreen;
-    }
-  }
-
-  .date {
-    font-size: 15px;
-  }
-
-  .description {
-    color: $midgray;
-    line-height: 24px;
-    font-size: 15px;
-  }
-}
 </style>

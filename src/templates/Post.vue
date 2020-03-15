@@ -1,5 +1,5 @@
 <template>
-  <Layout :class="$style.post">
+  <Layout :class="[$style.post, theme === 'dark' ? $style.dark : null]">
     <div :class="$style.head">
       <div :class="$style.tags">
         <g-link
@@ -41,26 +41,58 @@ query ($id: ID!) {
 </page-query>
 
 <script>
-export default {
-  metaInfo() {
-    return {
-      title: `Baptiste - ${this.$page.post.title}`,
-      meta: [
-        {
-          name: 'description',
-          content: this.$page.post.description
-        }
-      ]
+  import { mapGetters } from 'vuex'
+
+  export default {
+    metaInfo() {
+      return {
+        title: `Baptiste - ${this.$page.post.title}`,
+        meta: [
+          {
+            name: 'description',
+            content: this.$page.post.description
+          }
+        ]
+      }
+    },
+    computed: {
+      ...mapGetters(['theme']),
     }
-  },
-}
+  }
 </script>
 
 <style lang="scss" module>
-@import '@/styles/colors.scss';
-@import '@/styles/global.scss';
+  @import '@/styles/colors.scss';
 
   .post {
+    &.dark {
+      .head {
+        .tag {
+          color: $watergreen;
+        }
+
+        .date {
+          color: $porcelain;
+        }
+      }
+
+      h1 {
+        color: $porcelain;
+      }
+
+      .content {
+        color: $porcelain;
+
+        a {
+          color: $watergreen;
+        }
+      }
+
+      .back > span {
+        color: $watergreen;
+      }
+    }
+
     .back {
       margin: 24px 0 24px 0;
       width: fit-content;
@@ -84,6 +116,7 @@ export default {
 
       .tag {
         margin-right: 8px;
+        color: $midgray;
 
         &:hover {
           color: $cactusgreen;
@@ -111,6 +144,15 @@ export default {
         display: block;
         margin: 0 auto;
         max-width: 100%;
+      }
+
+      a {
+        word-break: break-word;
+        color: $midgray;
+
+        &:hover {
+          color: $cactusgreen;
+        }
       }
     }
   }

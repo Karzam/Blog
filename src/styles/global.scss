@@ -1,14 +1,13 @@
-/**
- * Texts
- */
- h1, h2, a, p, span, button {
+@import '@/styles/colors.scss';
+
+h1, h2, a, p, span, button {
  font-family: Quicksand;
 }
 
-a {
+a, button {
  cursor: pointer;
  text-decoration: none;
- color: $midgray;
+ outline: none;
 }
 
 a, p, span {
