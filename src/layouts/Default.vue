@@ -43,8 +43,6 @@
         </div>
       </header>
 
-      <v-else
-
       <slot />
     </div>
   </div>
