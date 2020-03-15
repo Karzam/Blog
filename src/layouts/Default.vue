@@ -14,7 +14,11 @@
             <g-image src="~/images/logo.png" width="128" alt="logo"/>
           </g-link>
 
-          <SwitchTheme :class="$style.switchTheme" />
+          <div :class="$style.socials">
+            <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
+            <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
+            <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
+          </div>
         </div>
 
         <div
@@ -33,12 +37,10 @@
             <g-link :class="$style.tab" to="/about">ABOUT</g-link>
 
             <div :class="$style.socials">
+              <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
+              <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
               <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
-              <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github-square']"/></a>
-              <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin']"/></a>
             </div>
-
-            <SwitchTheme :class="$style.switchTheme" />
           </nav>
         </div>
       </header>
@@ -49,23 +51,11 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-  import SwitchTheme from '~/components/SwitchTheme'
-
   export default {
     metaInfo: {
       title: 'Welcome'
     },
-    components: {
-      SwitchTheme,
-    },
-    data() {
-      return {
-        isMenuOpened: false,
-      }
-    },
     computed: {
-      ...mapGetters(['theme']),
       isMobile() {
         if (!process || !process.isClient) return
 
@@ -88,6 +78,7 @@
   }
 
   :global(body) {
+    background-color: $dark;
     height: 100%;
     display: flex;
     flex-flow: column;
@@ -96,37 +87,6 @@
   }
 
   .default {
-    background-color: $darkgreen;
-
-    .content {
-      .wrapper, .mobileWrapper {
-        .tab {
-          color: $porcelain;
-
-          &:hover {
-            color: $cactusgreen;
-          }
-        }
-
-        .socials svg {
-          color: $porcelain;
-
-          &:hover {
-            color: $cactusgreen;
-          }
-        }
-        
-        .logoWrapper img {
-          border: 2px solid $porcelain;
-        }
-      }
-    }
-  }
-
-  .default {
-    height: -webkit-fill-available;
-    display: table;
-
     .content {
       flex: 1 1 auto;
       padding-top: 104px;
@@ -157,19 +117,29 @@
           }
 
           .tab {
+            color: $porcelain;
             position: absolute;
-            top: 40px;
+            top: 38px;
             left: 24px;
           }
 
-          .switchTheme {
+          .socials {
             position: absolute;
-            top: 36px;
-            right: 36px;
+            right: 24px;
+            top: 38px;
+
+            > *:not(:last-child) {
+              margin-right: 10px;
+            }
 
             svg {
+              color: $porcelain;
               width: 22px;
               height: 22px;
+
+              &:hover {
+                color: $cactusgreen;
+              }
             }
           }
         }
@@ -189,6 +159,7 @@
             width: 64px;
             height: 64px;
             border-radius: 100%;
+            border: 2px solid $watergreen;
           }
         }
 
@@ -203,7 +174,7 @@
           .tab {
             font-weight: 500;
             white-space: nowrap;
-            color: $midgray;
+            color: $porcelain;
 
             &:not(:last-child) {
               margin-right: 32px;
@@ -215,16 +186,14 @@
           }
 
           .socials {
-            margin-right: 16px;
-
             > *:not(:last-child) {
               margin-right: 8px;
             }
 
             svg {
-              color: $midgray;
-              width: 20px;
-              height: 20px;
+              color: $porcelain;
+              width: 18px;
+              height: 18px;
 
               &:hover {
                 color: $cactusgreen;

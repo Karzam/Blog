@@ -1,5 +1,5 @@
 <template>
-  <Layout :class="[$style.tag, theme === 'dark' ? $style.dark : null]">
+  <Layout :class="$style.tag">
     <div :class="$style.head">
       <span :class="$style.tagWord">{{ `#${$page.tag.title}` }}</span>
       <span :class="$style.postNumber">{{ formattedPostNumber }}</span>
@@ -41,7 +41,6 @@ query ($id: ID!) {
 </page-query>
 
 <script>
-  import { mapGetters } from 'vuex'
   import PostCard from '~/components/PostCard'
 
   export default {
@@ -52,7 +51,6 @@ query ($id: ID!) {
       PostCard,
     },
     computed: {
-      ...mapGetters(['theme']),
       /**
        * Get formatted post number
        * @type {String}
@@ -72,27 +70,16 @@ query ($id: ID!) {
   @import '@/styles/colors.scss';
 
   .tag {
-    &.dark {
-      .head {
-        .tagWord {
-          color: $watergreen;
-        }
-
-        .postNumber {
-          color: $porcelain;
-        }
-      }
-    }
-
     .head {
       margin-bottom: 32px;
 
       .tagWord {
         font-size: 24px;
+        color: $watergreen;
       }
 
       .postNumber {
-        color: $midgray;
+        color: $porcelain;
         font-size: 16px;
         margin-left: 12px;
       }

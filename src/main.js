@@ -1,16 +1,15 @@
-import Vuex from 'vuex'
-import store from './store'
+
 import DefaultLayout from './layouts/Default.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { config, library } from '@fortawesome/fontawesome-svg-core'
-import { faGithubSquare, faLinkedin, faDev } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faLinkedinIn, faDev } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 require("gridsome-plugin-remark-prismjs-all/themes/tomorrow.css")
 
 config.autoAddCss = false
-library.add(faGithubSquare, faLinkedin, faDev, faMoon, faSun)
+library.add(faGithub, faLinkedinIn, faDev)
 
 export default function (Vue, { router, head, isClient, appOptions }) {
   head.link.push({
@@ -20,6 +19,4 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
   Vue.component('font-awesome', FontAwesomeIcon)
-  Vue.use(Vuex)
-  appOptions.store = new Vuex.Store(store)
 }

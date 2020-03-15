@@ -1,11 +1,11 @@
 <template>
-  <Layout :class="[$style.about, theme === 'dark' ? $style.dark : null]">
+  <Layout :class="$style.about">
     <g-image :class="$style.me" src="~/images/me.jpg" alt="me" width="256"/>
 
     <div :class="$style.links">
+      <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
+      <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
       <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
-      <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github-square']"/></a>
-      <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin']"/></a>
     </div>
 
     <p>Hi, I'm Baptiste. A software developer from France.</p>
@@ -27,15 +27,10 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     metaInfo: {
       title: 'About me'
     },
-    computed: {
-      ...mapGetters(['theme']),
-    }
   }
 </script>
 
@@ -43,13 +38,7 @@
   @import '@/styles/colors.scss';
 
   .about {
-    padding-bottom: 48px;
-
-    &.dark {
-      p, .links svg {
-        color: $porcelain;
-      }
-    }
+    margin-bottom: 48px;
 
     .me {
       display: flex;
@@ -62,6 +51,7 @@
     p {
       text-align: justify;
       line-height: 24px;
+      color: $porcelain;
     }
 
     .links {
@@ -69,7 +59,7 @@
       margin-top: 24px;
 
       svg {
-        color: $electromagnetic;
+        color: $porcelain;
         margin: 0 4px;
         width: 24px;
         height: 24px;

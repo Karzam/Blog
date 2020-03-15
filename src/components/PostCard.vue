@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.postCard, theme === 'dark' ? $style.dark : null]">
+  <div :class="$style.postCard">
     <div :class="$style.tags">
       <g-link
         v-for="tag in post.tags"
@@ -20,8 +20,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     props: {
       post: {
@@ -29,10 +27,7 @@
         required: true,
       }
     },
-    computed: {
-      ...mapGetters(['theme']),
-    }
-}
+  }
 </script>
 
 <style lang="scss" module>
@@ -42,21 +37,11 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 48px;
-    
-    &.dark {
-      .tag {
-        color: $watergreen;
-      }
-
-      .title, .date, .description {
-        color: $porcelain;
-      }
-    }
 
     .tag {
       margin-right: 8px;
       font-size: 16px;
-      color: $midgray;
+      color: $watergreen;
 
       &:hover {
         color: $cactusgreen;
@@ -65,7 +50,7 @@
 
     .title {
       margin: 4px 0 12px 0;
-      color: $electromagnetic;
+      color: $porcelain;
       font-size: 32px;
       font-weight: 500;
 
@@ -76,10 +61,11 @@
 
     .date {
       font-size: 15px;
+      color: $porcelain;
     }
 
     .description {
-      color: $midgray;
+      color: $porcelain;
       line-height: 24px;
       font-size: 15px;
     }

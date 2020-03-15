@@ -1,5 +1,5 @@
 <template>
-  <Layout :class="[$style.post, theme === 'dark' ? $style.dark : null]">
+  <Layout :class="$style.post">
     <div :class="$style.head">
       <div :class="$style.tags">
         <g-link
@@ -41,8 +41,6 @@ query ($id: ID!) {
 </page-query>
 
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     metaInfo() {
       return {
@@ -54,9 +52,6 @@ query ($id: ID!) {
           }
         ]
       }
-    },
-    computed: {
-      ...mapGetters(['theme']),
     }
   }
 </script>
@@ -65,40 +60,12 @@ query ($id: ID!) {
   @import '@/styles/colors.scss';
 
   .post {
-    &.dark {
-      .head {
-        .tag {
-          color: $watergreen;
-        }
-
-        .date {
-          color: $porcelain;
-        }
-      }
-
-      h1 {
-        color: $porcelain;
-      }
-
-      .content {
-        color: $porcelain;
-
-        a {
-          color: $watergreen;
-        }
-      }
-
-      .back > span {
-        color: $watergreen;
-      }
-    }
-
     .back {
       margin: 24px 0 24px 0;
       width: fit-content;
 
       > span {
-        color: $midgray;
+        color: $watergreen;
 
         &:hover {
           color: $cactusgreen;
@@ -112,11 +79,12 @@ query ($id: ID!) {
 
       .date {
         font-size: 16px;
+        color: $porcelain;
       }
 
       .tag {
         margin-right: 8px;
-        color: $midgray;
+        color: $watergreen;
 
         &:hover {
           color: $cactusgreen;
@@ -126,6 +94,7 @@ query ($id: ID!) {
 
     h1 {
       font-size: 36px;
+      color: $porcelain;
     }
 
     .content {
@@ -133,6 +102,7 @@ query ($id: ID!) {
       text-align: justify;
       line-height: 24px;
       font-size: 17px;
+      color: $porcelain;
 
       code[class*="language-"],
       pre[class*="language-"] * {
@@ -148,7 +118,7 @@ query ($id: ID!) {
 
       a {
         word-break: break-word;
-        color: $midgray;
+        color: $watergreen;
 
         &:hover {
           color: $cactusgreen;
