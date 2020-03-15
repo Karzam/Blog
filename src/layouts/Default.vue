@@ -18,7 +18,7 @@
         </div>
 
         <div
-          v-else
+          v-show="!isMobile"
           :key="$style.wrapper"
           :class="$style.wrapper"
         >
