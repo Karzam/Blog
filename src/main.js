@@ -11,6 +11,8 @@ require("gridsome-plugin-remark-prismjs-all/themes/tomorrow.css")
 config.autoAddCss = false
 library.add(faGithub, faLinkedinIn, faDev)
 
+import './styles/global.scss'
+
 export default function (Vue, { router, head, isClient, appOptions }) {
   head.link.push({
     rel: 'stylesheet',

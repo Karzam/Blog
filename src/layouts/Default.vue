@@ -73,19 +73,6 @@
   @import '@/styles/colors.scss';
   @import '@/styles/global.scss';
 
-  :global(html) {
-    height: 100%;
-  }
-
-  :global(body) {
-    background-color: $dark;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    margin: 0;
-    padding: 0;
-  }
-
   .default {
     .content {
       flex: 1 1 auto;
