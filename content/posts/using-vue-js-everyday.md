@@ -1,7 +1,7 @@
 ---
 title: Using Vue.js everyday
 date: 2020-02-27
-tags: ['tech']
+tags: ['tech', 'vue.js', 'javascript']
 description: "Vue.js is one of the most trending frameworks. I've been using it everyday for more than one year, and it feels great. Here are some of the things I like the most with it..."
 ---
 

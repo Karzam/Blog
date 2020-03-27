@@ -1,7 +1,7 @@
 ---
 title: "Making a game with Javascript: Part 2"
 date: 2020-03-11
-tags: ['tech', 'tutorial']
+tags: ['tech', 'tutorial', 'javascript', 'game']
 description: "This post is the second part of my tutorial to make a shoot'em up game with Javascript and Pixi.js. This time we are adding the player spaceship! You can find the first part here..."
 ---
 
