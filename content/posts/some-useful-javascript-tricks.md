@@ -1,7 +1,7 @@
 ---
 title: Some useful ES6 tricks
 date: 2020-03-12
-tags: ['tech']
+tags: ['tech', 'javascript', 'tricks']
 description: "When it comes to writing Javascript, there are some tricks very useful to make your code easily readable. I wrote this post to talk about some of them, probably the ones I use the most..."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Making a game with Javascript: Part 1"
 date: 2020-03-09
-tags: ['tech', 'tutorial']
+tags: ['tech', 'tutorial', 'javascript', 'game']
 description: "I wrote a shoot'em up tutorial few years ago that got published on Medium and Hackernoon, and got read by lot of people, but something itches a lot : it's old now!..."
 ---
 
