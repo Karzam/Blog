@@ -100,9 +100,30 @@ type Result {
 
 It's somehow blurry to switch between Prisma client's abstracted schema (which is actually in your server), and the "under the hood" types of the Prisma server.
 
+### Authentication
+
+For now, we can sign in using a GitHub account. Server instantiates a JSON web token, which is sent back to the client, and used in the authorization header. Apollo client provides an easy way to set this header whenever user gets logged in, with `request` param:
+
+```jsx
+const client = new ApolloClient({
+  uri,
+  request: (operation) => {
+    operation.setContext({
+      headers: {
+        authorization: authToken ? `Bearer ${authToken}` : ''
+      }
+    })
+  }
+})
+```
+
 ### The features
 
-For the moment, the quiz features a selection level screen:
+For the moment, the quiz features a home screen:
+
+![alt text](https://raw.githubusercontent.com/Karzam/JS_Quiz/master/screenshots/home.jpg "Home screen")
+
+A difficulty level selection:
 
 ![alt text](https://raw.githubusercontent.com/Karzam/JS_Quiz/master/screenshots/level_selection.jpg "Difficulty level selection screen")  
 
@@ -111,27 +132,13 @@ For the moment, the quiz features a selection level screen:
 
 ![alt text](https://raw.githubusercontent.com/Karzam/JS_Quiz/master/screenshots/quiz.jpg "Quiz screen")  
 
-Given answers are stored in the local component state. On the last one registered, they are all sent in a mutation to create results in database (because we need to complete the quiz entirely to save and get results):
-
-```jsx
-const [createResults, { loading: mutating }] = useMutation(CREATE_RESULTS)
-
-const onEnd = async(answers) => {
-  const reponse = await createResults({
-    variables: {
-      input: answers
-    }
-  })
-  
-  return history.replace('/result', { results: response.data.createResults })
-}
-```
+Given answers are stored in the local component state. On the last one registered, they are all sent in a mutation to create results in database (because we need to complete the quiz entirely to save and get results).
 
 Once it's done, results are sent back by the mutation, and displayed:
 
 ![alt text](https://raw.githubusercontent.com/Karzam/JS_Quiz/master/screenshots/results.jpg "Results screen")  
 
-The next steps: user authentication, making a screen with all the previous quiz results of the current user, and why not a leaderboard.
+The next steps: the previous quiz results screen, and the leaderboard.
 I also need to fill the database with a lot of questions, so it's not always fetching the same ones. I plan to post a new article when these features are integrated.
 
 Thanks for reading!
