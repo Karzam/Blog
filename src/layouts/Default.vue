@@ -9,7 +9,7 @@
         >
           <g-link to="/" class="logo-wrapper">
             <g-image src="~/images/logo.png" width="64" alt="logo"/>
-            <g-link to="/">Baptiste Ménard</g-link>
+            <span>Baptiste Ménard</span>
           </g-link>
 
           <g-link class="tab" to="/about">ABOUT</g-link>
@@ -21,7 +21,7 @@
         >
           <g-link to="/" class="logo-wrapper">
             <g-image src="~/images/logo.png" width="64" alt="logo"/>
-            <g-link to="/">Baptiste Ménard</g-link>
+            <span>Baptiste Ménard</span>
           </g-link>
 
           <nav>
