@@ -7,10 +7,10 @@
           v-show="isMobile"
           class="mobile-wrapper"
         >
-          <g-link to="/" class="logo-wrapper">
+          <div class="logo-wrapper">
             <g-image src="~/images/logo.png" width="64" alt="logo"/>
-            <span>Baptiste Ménard</span>
-          </g-link>
+            <g-link to="/">Baptiste Ménard</g-link>
+          </div>
 
           <g-link class="tab" to="/about">ABOUT</g-link>
         </div>
@@ -19,10 +19,10 @@
           v-show="!isMobile"
           class="wrapper"
         >
-          <g-link to="/" class="logo-wrapper">
+          <div class="logo-wrapper">
             <g-image src="~/images/logo.png" width="64" alt="logo"/>
-            <span>Baptiste Ménard</span>
-          </g-link>
+            <g-link to="/">Baptiste Ménard</g-link>
+          </div>
 
           <nav>
             <g-link class="tab" to="/">LATEST</g-link>
