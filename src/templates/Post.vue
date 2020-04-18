@@ -93,7 +93,7 @@ query ($id: ID!) {
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 32px;
       color: $porcelain;
     }
 
@@ -103,6 +103,10 @@ query ($id: ID!) {
       line-height: 24px;
       font-size: 17px;
       color: $porcelain;
+
+      div {
+        border-radius: 6px;
+      }
 
       code[class*="language-"],
       pre[class*="language-"] * {
@@ -116,8 +120,12 @@ query ($id: ID!) {
         max-width: 100%;
       }
 
+      p a::before {
+        content: "🔗 ";
+      }
+
       a {
-        word-break: break-word;
+        word-break: break-all;
         color: $watergreen;
 
         &:hover {

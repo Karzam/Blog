@@ -5,33 +5,28 @@
       <header class="header">
         <div
           v-show="isMobile"
-          class="mobileWrapper"
+          class="mobile-wrapper"
         >
-          <g-link class="tab" to="/about">ABOUT</g-link>
-
-          <g-link to="/" class="logoWrapper">
-            <g-image src="~/images/logo.png" width="128" alt="logo"/>
-          </g-link>
-
-          <div class="socials">
-            <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
-            <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
-            <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
+          <div class="logo-wrapper">
+            <g-image src="~/images/logo.png" width="64" alt="logo"/>
+            <g-link to="/">Baptiste Ménard</g-link>
           </div>
+
+          <g-link class="tab" to="/about">ABOUT</g-link>
         </div>
 
         <div
           v-show="!isMobile"
           class="wrapper"
         >
-          <g-link to="/" class="logoWrapper">
-            <g-image src="~/images/logo.png" width="128" alt="logo"/>
-          </g-link>
+          <div class="logo-wrapper">
+            <g-image src="~/images/logo.png" width="64" alt="logo"/>
+            <g-link to="/">Baptiste Ménard</g-link>
+          </div>
 
           <nav>
             <g-link class="tab" to="/">LATEST</g-link>
             <g-link class="tab" to="/tag/tech"># TECH</g-link>
-            <g-link class="tab" to="/tag/misc"># MISC</g-link>
             <g-link class="tab" to="/about">ABOUT</g-link>
 
             <div class="socials">
@@ -74,77 +69,68 @@
   .default {
     .content {
       flex: 1 1 auto;
-      padding-top: 104px;
       margin: 0 auto;
-      width: 50%;
+      max-width: 760px;
       display: flex;
       flex-direction: column;
+
+      @media (max-width: 768px) {
+        width: 80%;
+      }
 
       @media (max-width: 640px) {
         width: 90%;
       }
 
       header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
         padding: 10px 0;
         width: 100%;
         height: 64px;
+        margin-bottom: 24px;
 
-        .mobileWrapper {
-          .logoWrapper > img {
-            width: 64px;
-            height: 64px;
-            border-radius: 100%;
-            margin: auto;
-          }
-
-          .tab {
-            color: $porcelain;
-            position: absolute;
-            top: 38px;
-            left: 24px;
-          }
-
-          .socials {
-            position: absolute;
-            right: 24px;
-            top: 38px;
-
-            > *:not(:last-child) {
-              margin-right: 10px;
-            }
-
-            svg {
-              color: $porcelain;
-              width: 22px;
-              height: 22px;
-
-              &:hover {
-                color: $cactusgreen;
-              }
-            }
-          }
-        }
-
+        .mobile-wrapper,
         .wrapper {
           display: flex;
           align-items: center;
           justify-content: space-between;
           margin: auto;
-          width: 80%;
+
+          .logo-wrapper {
+            display: flex;
+            align-items: center;
+            height: 64px;
+
+            > a {
+              color: white;
+              font-size: 22px;
+
+              &:hover {
+                color: $cactusgreen;
+              }
+            }
+
+            > img {
+              width: 28px;
+              height: 28px;
+              margin-right: 8px;
+            }
+          }
         }
 
-        .logoWrapper {
-          display: flex;
+        .mobile-wrapper {
+          width: 90%;
 
-          > img {
-            width: 64px;
-            height: 64px;
-            border-radius: 100%;
-            border: 2px solid $watergreen;
+          .logo-wrapper {
+            > a {
+              color: white;
+              font-size: 20px;
+            }
+          }
+
+          .tab {
+            color: $porcelain;
+            font-size: 16px;
+            margin-right: 8px;
           }
         }
 

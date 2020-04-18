@@ -51,7 +51,7 @@
     .title {
       margin: 4px 0 12px 0;
       color: $porcelain;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 500;
 
       &:hover {
@@ -67,7 +67,7 @@
     .description {
       color: $porcelain;
       line-height: 24px;
-      font-size: 15px;
+      font-size: 16px;
     }
   }
 </style>
