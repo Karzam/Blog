@@ -8,7 +8,7 @@
       <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
     </div>
 
-    <p>Hi! I'm Baptiste, a software developer from France.</p>
+    <p>Hi! I'm Baptiste, 23 year-old, from France.</p>
 
     <p>I'm currently working for a Paris-based company as a software developer, fully-remote from the South of France. I'm front-end focused but also working on back-end.</p>
 
