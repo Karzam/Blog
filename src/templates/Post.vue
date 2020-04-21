@@ -121,7 +121,7 @@ query ($id: ID!) {
       }
 
       p a::before {
-        content: "🔗 ";
+        content: "🔗";
       }
 
       a {
