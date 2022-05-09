@@ -1,26 +1,19 @@
-
 <template>
   <div class="default">
     <div class="content">
       <header class="header">
-        <div
-          v-show="isMobile"
-          class="mobile-wrapper"
-        >
+        <div v-show="isMobile" class="mobile-wrapper">
           <div class="logo-wrapper">
-            <g-image src="~/images/logo.png" width="64" alt="logo"/>
+            <g-image src="~/images/me.jpg" width="64" alt="logo" />
             <g-link to="/">Baptiste Ménard</g-link>
           </div>
 
           <g-link class="tab" to="/about">ABOUT</g-link>
         </div>
 
-        <div
-          v-show="!isMobile"
-          class="wrapper"
-        >
+        <div v-show="!isMobile" class="wrapper">
           <div class="logo-wrapper">
-            <g-image src="~/images/logo.png" width="64" alt="logo"/>
+            <g-image src="~/images/me.jpg" width="64" alt="logo" />
             <g-link to="/">Baptiste Ménard</g-link>
           </div>
 
@@ -30,9 +23,15 @@
             <g-link class="tab" to="/about">ABOUT</g-link>
 
             <div class="socials">
-              <a href="https://linkedin.com/in/baptiste-menard-profile/"><font-awesome :icon="['fab', 'linkedin-in']"/></a>
-              <a href="https://github.com/karzam"><font-awesome :icon="['fab', 'github']"/></a>
-              <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
+              <a href="https://linkedin.com/in/baptiste-menard-profile/"
+                ><font-awesome :icon="['fab', 'linkedin-in']"
+              /></a>
+              <a href="https://github.com/karzam"
+                ><font-awesome :icon="['fab', 'github']"
+              /></a>
+              <a href="https://dev.to/baba"
+                ><font-awesome :icon="['fab', 'dev']"
+              /></a>
             </div>
           </nav>
         </div>
@@ -44,135 +43,141 @@
 </template>
 
 <script>
-  export default {
-    metaInfo: {
-      title: 'Welcome'
-    },
-    computed: {
-      isMobile() {
-        if (!process || !process.isClient) return
+export default {
+  metaInfo: {
+    title: "Welcome",
+  },
+  computed: {
+    isMobile() {
+      if (!process || !process.isClient) return;
 
-        if (navigator && /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          return true
-        } else {
-          return false
-        }
-      },
-    }
-  }
+      if (
+        navigator &&
+        /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-  @import '@/styles/colors.scss';
-  @import '@/styles/global.scss';
+@import "@/styles/colors.scss";
+@import "@/styles/global.scss";
 
-  .default {
-    .content {
-      flex: 1 1 auto;
-      margin: 0 auto;
-      max-width: 760px;
-      display: flex;
-      flex-direction: column;
+.default {
+  .content {
+    flex: 1 1 auto;
+    margin: 0 auto;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
 
-      @media (max-width: 768px) {
-        width: 80%;
-      }
+    @media (max-width: 768px) {
+      width: 80%;
+    }
 
-      @media (max-width: 640px) {
-        width: 90%;
-      }
+    @media (max-width: 640px) {
+      width: 90%;
+    }
 
-      header {
-        padding: 10px 0;
-        width: 100%;
-        height: 64px;
-        margin-bottom: 24px;
+    header {
+      padding: 10px 0;
+      width: 100%;
+      height: 64px;
+      margin-bottom: 24px;
 
-        .mobile-wrapper,
-        .wrapper {
+      .mobile-wrapper,
+      .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+
+        .logo-wrapper {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          margin: auto;
+          height: 64px;
 
-          .logo-wrapper {
-            display: flex;
-            align-items: center;
-            height: 64px;
-
-            > a {
-              color: white;
-              font-size: 22px;
-
-              &:hover {
-                color: $cactusgreen;
-              }
-            }
-
-            > img {
-              width: 28px;
-              height: 28px;
-              margin-right: 8px;
-            }
-          }
-        }
-
-        .mobile-wrapper {
-          width: 90%;
-
-          .logo-wrapper {
-            > a {
-              color: white;
-              font-size: 20px;
-            }
-          }
-
-          .tab {
-            color: $porcelain;
-            font-size: 16px;
-            margin-right: 8px;
-          }
-        }
-
-        nav {
-          display: flex;
-          align-items: center;
-
-          @media (max-width: 640px) {
-            display: none;
-          }
-
-          .tab {
-            font-weight: 500;
-            white-space: nowrap;
-            color: $porcelain;
-
-            &:not(:last-child) {
-              margin-right: 32px;
-            }
+          > a {
+            color: white;
+            font-size: 22px;
 
             &:hover {
               color: $cactusgreen;
             }
           }
 
-          .socials {
-            > *:not(:last-child) {
-              margin-right: 8px;
-            }
+          > img {
+            width: 32px;
+            height: 32px;
+            margin-right: 16px;
+            border-radius: 100px;
+          }
+        }
+      }
 
-            svg {
-              color: $porcelain;
-              width: 18px;
-              height: 18px;
+      .mobile-wrapper {
+        width: 90%;
 
-              &:hover {
-                color: $cactusgreen;
-              }
+        .logo-wrapper {
+          > a {
+            color: white;
+            font-size: 20px;
+          }
+        }
+
+        .tab {
+          color: $porcelain;
+          font-size: 16px;
+          margin-right: 8px;
+        }
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 640px) {
+          display: none;
+        }
+
+        .tab {
+          font-weight: 500;
+          white-space: nowrap;
+          color: $porcelain;
+
+          &:not(:last-child) {
+            margin-right: 32px;
+          }
+
+          &:hover {
+            color: $cactusgreen;
+          }
+        }
+
+        .socials {
+          > *:not(:last-child) {
+            margin-right: 8px;
+          }
+
+          svg {
+            color: $porcelain;
+            width: 18px;
+            height: 18px;
+
+            &:hover {
+              color: $cactusgreen;
             }
           }
         }
       }
     }
   }
+}
 </style>
