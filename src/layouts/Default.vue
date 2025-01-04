@@ -4,7 +4,7 @@
       <header class="header">
         <div v-show="isMobile" class="mobile-wrapper">
           <div class="logo-wrapper">
-            <g-image src="~/images/me.jpg" width="64" alt="logo" />
+            <g-image src="~/images/me.png" width="64" alt="logo" />
             <g-link to="/">Baptiste Ménard</g-link>
           </div>
 
@@ -13,7 +13,7 @@
 
         <div v-show="!isMobile" class="wrapper">
           <div class="logo-wrapper">
-            <g-image src="~/images/me.jpg" width="64" alt="logo" />
+            <g-image src="~/images/me.png" width="64" alt="logo" />
             <g-link to="/">Baptiste Ménard</g-link>
           </div>
 
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     isMobile() {
-      if (!process || !process.isClient) return;
+      if (!process || !process.isClient) return
 
       if (
         navigator &&
@@ -57,13 +57,13 @@ export default {
           navigator.userAgent
         )
       ) {
-        return true;
+        return true
       } else {
-        return false;
+        return false
       }
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
   <Layout :class="$style.about">
-    <g-image :class="$style.me" src="~/images/me.jpg" alt="me" width="256" />
+    <g-image :class="$style.me" src="~/images/me.png" alt="me" width="256" />
 
     <div :class="$style.links">
       <a href="https://linkedin.com/in/baptiste-menard-profile/"
@@ -9,28 +9,26 @@
       <a href="https://github.com/karzam"
         ><font-awesome :icon="['fab', 'github']"
       /></a>
-      <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']"/></a>
+      <a href="https://dev.to/baba"><font-awesome :icon="['fab', 'dev']" /></a>
     </div>
-
-    <p>Hi! I'm Baptiste, 25 year-old, from France.</p>
-
     <p>
-      I'm currently working for a Paris-based company as a software developer,
-      fully-remote from the South of France.
+      Hi! I'm Baptiste, a 28-year-old software developer from France, currently
+      living in the South of France.
     </p>
 
     <p>
-      I'm building web applications with Typescript, React, GraphQL, Node.js...
+      I'm a lead software developer at Neoxam, a Paris-based company, where I
+      work fully remotely.
     </p>
 
     <p>
-      I built this website using Gridsome, a static site generator using Vue.js,
-      GraphQL and markdown content files.
+      When I'm not working, I enjoy building web applications with React and
+      Node.js, and I'm also a dad of one girl.
     </p>
 
     <p>
-      If you wish to discuss or anything, you can email me at
-      bapmenard@gmail.com.
+      Feel free to reach out to me to discuss or anything else, I can be reached
+      at bapmenard@gmail.com.
     </p>
   </Layout>
 </template>
@@ -40,7 +38,7 @@ export default {
   metaInfo: {
     title: "About me",
   },
-};
+}
 </script>
 
 <style lang="scss" module>
