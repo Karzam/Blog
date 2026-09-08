@@ -1,0 +1,1179 @@
+<title>Refonte baptistemenard.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300..600&display=swap">
+
+<style>
+:root{
+  --ground:#E8EAE6;
+  --surface:#F3F4F1;
+  --surface-2:#DEE2DC;
+  --ink:#141A17;
+  --ink-2:#3B453F;
+  --muted:#6C7772;
+  --rule:#C6CBC4;
+  --rule-soft:#D8DCD6;
+  --accent:#0E5C48;
+  --accent-ink:#0B4738;
+  --accent-wash:#D6E4DD;
+  --signal:#A44E17;
+  --shadow:rgba(20,26,23,.10);
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  --rail:150px;
+  --gap:clamp(24px,4vw,56px);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1210;
+    --surface:#141A17;
+    --surface-2:#1B2320;
+    --ink:#E7EBE7;
+    --ink-2:#B9C2BC;
+    --muted:#7F8A84;
+    --rule:#2A342F;
+    --rule-soft:#1E2622;
+    --accent:#5FD1AE;
+    --accent-ink:#8FE3C8;
+    --accent-wash:#14241E;
+    --signal:#DE9455;
+    --shadow:rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1210;
+  --surface:#141A17;
+  --surface-2:#1B2320;
+  --ink:#E7EBE7;
+  --ink-2:#B9C2BC;
+  --muted:#7F8A84;
+  --rule:#2A342F;
+  --rule-soft:#1E2622;
+  --accent:#5FD1AE;
+  --accent-ink:#8FE3C8;
+  --accent-wash:#14241E;
+  --signal:#DE9455;
+  --shadow:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- shell ---------- */
+
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 clamp(18px,4vw,40px);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:var(--rail) minmax(0,1fr);
+  gap:var(--gap);
+  align-items:start;
+}
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;gap:14px}
+}
+
+.rail{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:.55em;
+  position:sticky;
+  top:96px;
+}
+@media (max-width:860px){
+  .rail{position:static;padding-top:0}
+}
+.rail b{display:block;color:var(--ink-2);font-weight:500}
+.rail span{display:block;margin-top:.5em;letter-spacing:.06em;text-transform:none;font-size:11px;color:var(--muted)}
+
+/* ---------- notice strip ---------- */
+
+.notice{
+  background:var(--surface-2);
+  border-bottom:1px solid var(--rule);
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.03em;
+  color:var(--ink-2);
+}
+.notice .wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  align-items:baseline;
+  padding-top:9px;
+  padding-bottom:9px;
+}
+.notice .dot{
+  color:var(--signal);
+  font-weight:500;
+}
+
+/* ---------- header ---------- */
+
+header.bar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule-soft);
+}
+header.bar .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  height:60px;
+}
+.brand{
+  font-family:var(--display);
+  font-weight:700;
+  font-stretch:108%;
+  font-size:16px;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  text-decoration:none;
+  white-space:nowrap;
+}
+.brand em{font-style:normal;color:var(--accent)}
+
+nav.top{display:flex;align-items:center;gap:clamp(12px,2.2vw,26px)}
+nav.top a{
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-decoration:none;
+  padding-bottom:2px;
+  border-bottom:1px solid transparent;
+}
+nav.top a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+@media (max-width:720px){ nav.top a.hide-sm{display:none} }
+
+.toggle{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  background:transparent;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:5px 9px;
+  cursor:pointer;
+}
+.toggle:hover{color:var(--ink);border-color:var(--accent)}
+
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:1px;
+}
+
+/* ---------- sections ---------- */
+
+section{
+  padding:clamp(46px,7vw,86px) 0;
+  border-bottom:1px solid var(--rule-soft);
+  scroll-margin-top:70px;
+}
+section:first-of-type{border-top:none}
+
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+
+h1{
+  font-weight:800;
+  font-stretch:104%;
+  font-size:clamp(34px,5.4vw,62px);
+  line-height:1.03;
+  letter-spacing:-.024em;
+  margin:0 0 22px;
+  max-width:16ch;
+}
+h1 .hl{color:var(--accent)}
+
+h2{
+  font-weight:700;
+  font-stretch:110%;
+  font-size:clamp(21px,2.5vw,28px);
+  line-height:1.15;
+  letter-spacing:-.014em;
+  margin:0 0 26px;
+}
+
+h3{
+  font-weight:700;
+  font-stretch:104%;
+  font-size:17px;
+  letter-spacing:-.005em;
+  line-height:1.3;
+}
+
+p{margin:0 0 1em;max-width:62ch;color:var(--ink-2)}
+p.lead{font-size:19.5px;line-height:1.58;color:var(--ink-2);max-width:58ch}
+p:last-child{margin-bottom:0}
+
+.kicker{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 20px;
+}
+.kicker .live{
+  color:var(--accent);
+}
+
+/* ---------- hero ---------- */
+
+.hero{padding-top:clamp(40px,6vw,72px)}
+
+.facts{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  border-top:1px solid var(--rule);
+  margin:34px 0 30px;
+  max-width:640px;
+}
+.facts div{
+  padding:14px 18px 12px 0;
+}
+.facts div + div{
+  border-left:1px solid var(--rule-soft);
+  padding-left:18px;
+}
+.facts dt{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:5px;
+}
+.facts dd{
+  margin:0;
+  font-family:var(--display);
+  font-weight:700;
+  font-stretch:106%;
+  font-size:clamp(17px,2vw,21px);
+  letter-spacing:-.012em;
+  font-variant-numeric:tabular-nums;
+  line-height:1.2;
+}
+@media (max-width:560px){
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:nth-child(3){grid-column:1 / -1;border-left:none;padding-left:0;border-top:1px solid var(--rule-soft)}
+}
+
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+.btn{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:11px 18px;
+  border-radius:2px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:var(--ground);
+  transition:transform .12s ease, opacity .12s ease;
+}
+.btn:hover{opacity:.88;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--accent)}
+
+/* ---------- practice list ---------- */
+
+.practice{border-top:1px solid var(--rule)}
+.practice > div{
+  display:grid;
+  grid-template-columns:minmax(0,20ch) minmax(0,1fr);
+  gap:8px var(--gap);
+  padding:22px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.practice > div:last-child{border-bottom:none}
+@media (max-width:680px){
+  .practice > div{grid-template-columns:1fr;gap:6px}
+}
+.practice h3 .num{
+  font-family:var(--mono);
+  font-weight:400;
+  font-size:11px;
+  color:var(--muted);
+  display:block;
+  letter-spacing:.12em;
+  margin-bottom:6px;
+}
+.practice p{font-size:16.5px;margin:0}
+
+/* ---------- timeline ---------- */
+
+.role{
+  display:grid;
+  grid-template-columns:minmax(0,17ch) minmax(0,1fr);
+  gap:10px var(--gap);
+  padding:26px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.role:first-child{border-top:1px solid var(--rule)}
+@media (max-width:680px){
+  .role{grid-template-columns:1fr;gap:8px}
+}
+.when{
+  font-family:var(--mono);
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink-2);
+  line-height:1.7;
+}
+.when .dur{display:block;color:var(--muted);font-size:11px;letter-spacing:.04em}
+.when .now{
+  display:inline-block;
+  margin-top:8px;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  border-radius:2px;
+  padding:1px 6px;
+}
+.role .co{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:7px;
+}
+.role .where{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.04em;
+  margin:0 0 10px;
+}
+.role ul{margin:12px 0 0;padding:0;list-style:none;max-width:62ch}
+.role li{
+  position:relative;
+  padding-left:18px;
+  margin-bottom:7px;
+  font-size:16px;
+  color:var(--ink-2);
+}
+.role li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.72em;
+  width:7px;height:1px;
+  background:var(--accent);
+}
+.role li:last-child{margin-bottom:0}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:13px}
+.chip{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.05em;
+  color:var(--muted);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:2px 7px;
+  white-space:nowrap;
+}
+
+/* ---------- stack ---------- */
+
+.stack-row{
+  display:grid;
+  grid-template-columns:minmax(0,17ch) minmax(0,1fr);
+  gap:10px var(--gap);
+  padding:18px 0;
+  border-bottom:1px solid var(--rule-soft);
+  align-items:baseline;
+}
+.stack-row:first-of-type{border-top:1px solid var(--rule)}
+@media (max-width:680px){
+  .stack-row{grid-template-columns:1fr;gap:8px}
+}
+.stack-row .cat{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.01em;
+  color:var(--ink-2);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:1px;
+}
+.tag.daily{
+  color:var(--ink);
+  border-bottom:2px solid var(--accent);
+  font-weight:500;
+}
+.legend{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-top:20px;
+  letter-spacing:.03em;
+}
+.legend i{
+  font-style:normal;
+  border-bottom:2px solid var(--accent);
+  color:var(--ink-2);
+}
+
+/* ---------- projects ---------- */
+
+.proj{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);
+  gap:10px var(--gap);
+  padding:24px 0;
+  border-bottom:1px solid var(--rule-soft);
+  text-decoration:none;
+  color:inherit;
+  transition:background .15s ease;
+}
+.proj:first-of-type{border-top:1px solid var(--rule)}
+@media (max-width:680px){
+  .proj{grid-template-columns:1fr;gap:8px}
+}
+a.proj:hover{background:var(--surface)}
+a.proj:hover h3{color:var(--accent)}
+.proj .meta{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.06em;
+  margin-top:7px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.proj p{font-size:16px;margin:0}
+.proj .arrow{color:var(--accent);font-family:var(--mono)}
+
+.proj.slot{
+  border:1px dashed var(--rule);
+  border-radius:3px;
+  padding:24px 20px;
+  margin-top:22px;
+  background:transparent;
+  display:block;
+}
+.proj.slot h3{color:var(--muted);font-stretch:100%;font-weight:700}
+.proj.slot p{color:var(--muted);margin-top:6px}
+
+/* ---------- writing ---------- */
+
+.post{
+  display:grid;
+  grid-template-columns:minmax(0,10ch) minmax(0,1fr) minmax(0,14ch);
+  gap:4px var(--gap);
+  padding:14px 0;
+  border-bottom:1px solid var(--rule-soft);
+  align-items:baseline;
+  text-decoration:none;
+  color:inherit;
+}
+.post:first-of-type{border-top:1px solid var(--rule)}
+.post:hover .t{color:var(--accent)}
+@media (max-width:680px){
+  .post{grid-template-columns:1fr;gap:3px;padding:13px 0}
+  .post .tg{order:3}
+}
+.post .d{
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.03em;
+}
+.post .t{font-size:16.5px;color:var(--ink)}
+.post .tg{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.03em;
+  text-align:right;
+}
+@media (max-width:680px){ .post .tg{text-align:left} }
+
+/* ---------- contact ---------- */
+
+.links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:0;
+  border-top:1px solid var(--rule);
+  margin-top:30px;
+}
+.links a{
+  padding:18px 20px 18px 0;
+  text-decoration:none;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule-soft);
+  display:block;
+}
+.links a + a{border-left:1px solid var(--rule-soft);padding-left:20px}
+@media (max-width:600px){
+  .links{grid-template-columns:1fr}
+  .links a + a{border-left:none;padding-left:0}
+}
+.links .lbl{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:block;
+  margin-bottom:5px;
+}
+.links .val{
+  font-family:var(--display);
+  font-weight:700;
+  font-stretch:104%;
+  font-size:16px;
+  letter-spacing:-.008em;
+  word-break:break-word;
+}
+.links a:hover .val{color:var(--accent)}
+
+/* ---------- notes ---------- */
+
+.notes{background:var(--surface);border-bottom:none}
+.notes h2{font-size:clamp(19px,2.2vw,24px)}
+.note-block{
+  border-top:1px solid var(--rule);
+  padding:18px 0;
+}
+.note-block:last-of-type{border-bottom:1px solid var(--rule)}
+.note-block h3{
+  font-family:var(--mono);
+  font-weight:500;
+  font-stretch:100%;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.note-block ul{margin:0;padding-left:18px;max-width:66ch}
+.note-block li{margin-bottom:6px;font-size:15.5px;color:var(--ink-2)}
+.note-block li:last-child{margin-bottom:0}
+.note-block li b{color:var(--ink);font-weight:600}
+.note-block code{
+  font-family:var(--mono);
+  font-size:12.5px;
+  background:var(--surface-2);
+  border-radius:2px;
+  padding:1px 5px;
+}
+
+footer{
+  padding:30px 0 46px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.05em;
+  color:var(--muted);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  justify-content:space-between;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important}
+  html{scroll-behavior:auto}
+}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="notice">
+  <div class="wrap">
+    <span class="dot">●</span>
+    <span>MAQUETTE DE PROPOSITION — RIEN N'EST DÉPLOYÉ</span>
+    <span>Contenu tiré du profil LinkedIn + du repo Gridsome existant</span>
+    <span>Notes &amp; arbitrages en bas de page ↓</span>
+  </div>
+</div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Baptiste Ménard<em>.</em></a>
+    <nav class="top">
+      <a href="#faire" class="hide-sm">Ce que je fais</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#stack" class="hide-sm">Stack</a>
+      <a href="#projets">Projets</a>
+      <a href="#ecrits" class="hide-sm">Écrits</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle" id="theme" type="button" aria-label="Basculer le thème">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid">
+      <div class="rail">
+        <b>00</b>
+        <span>Bordeaux, FR</span>
+        <span>Remote</span>
+      </div>
+      <div>
+        <p class="kicker"><span class="live">●</span> Senior Product Engineer — Lead Developer chez NeoXam</p>
+        <h1>Je construis des produits <span class="hl">SaaS</span> — la spec, l'archi et le code.</h1>
+        <p class="lead">
+          Huit ans en startup à faire le trajet complet : challenger une spec avec le produit,
+          concevoir la solution, la découper, l'écrire, la mettre en prod. Aujourd'hui je pilote
+          une squad de cinq développeurs sur une application de reporting financier, et Claude Code
+          fait partie de mon outillage quotidien.
+        </p>
+
+        <dl class="facts">
+          <div>
+            <dt>Expérience</dt>
+            <dd>8 ans</dd>
+          </div>
+          <div>
+            <dt>Produits livrés</dt>
+            <dd>5 entreprises</dd>
+          </div>
+          <div>
+            <dt>Stack de cœur</dt>
+            <dd>TS · React · Node</dd>
+          </div>
+        </dl>
+
+        <div class="cta">
+          <a class="btn" href="#contact">Me contacter</a>
+          <a class="btn ghost" href="#parcours">Voir le parcours</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE JE FAIS -->
+  <section id="faire">
+    <div class="grid">
+      <div class="rail">
+        <b>01</b>
+        <span>Ce que je fais</span>
+      </div>
+      <div>
+        <h2>Quatre casquettes, souvent dans la même semaine</h2>
+        <p>
+          Je ne me définis pas par un framework mais par l'endroit où je suis utile : entre l'intention
+          produit et le code qui tourne en production.
+        </p>
+
+        <div class="practice">
+          <div>
+            <h3><span class="num">A</span>Product engineering</h3>
+            <p>
+              J'écris et je challenge les specs avec les équipes produit, je conçois les solutions,
+              je découpe et j'estime — puis je développe jusqu'à la mise en production. Le produit
+              n'est pas quelque chose qu'on me passe, c'est quelque chose que je construis avec.
+            </p>
+          </div>
+          <div>
+            <h3><span class="num">B</span>Développement augmenté par l'IA</h3>
+            <p>
+              Claude Code est dans ma boucle quotidienne : concevoir, générer et refactorer du code,
+              écrire des tests, explorer plusieurs pistes avant d'en garder une. Ce n'est pas un gadget
+              de démo, c'est une vitesse d'itération différente.
+            </p>
+          </div>
+          <div>
+            <h3><span class="num">C</span>Architecture &amp; infrastructure</h3>
+            <p>
+              Conception et évolution d'applications cloud dockerisées, structuration des processus
+              de déploiement, et migrations complexes : applications legacy, architectures backend,
+              refontes de design systems front.
+            </p>
+          </div>
+          <div>
+            <h3><span class="num">D</span>Leadership technique</h3>
+            <p>
+              Accompagnement des développeurs moins expérimentés, revues de code, partage de pratiques.
+              Je pilote une squad de cinq personnes sans quitter le clavier — le lead qui ne code plus
+              perd vite le contact avec ce qu'il demande.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <div class="grid">
+      <div class="rail">
+        <b>02</b>
+        <span>Parcours</span>
+        <span>2015 → 2026</span>
+      </div>
+      <div>
+        <h2>Du dev iOS au lead product engineer</h2>
+
+        <div class="role">
+          <div class="when">
+            2024 — auj.
+            <span class="dur">2 ans 3 mois</span>
+            <span class="now">En poste</span>
+          </div>
+          <div>
+            <div class="co">NeoXam</div>
+            <h3>Lead Développeur Fullstack</h3>
+            <p class="where">Paris — remote</p>
+            <p>
+              Éditeur de solutions logicielles pour la gestion de données, la gestion de portefeuilles
+              et le reporting des acteurs financiers : banques, gestionnaires d'actifs, assureurs.
+            </p>
+            <ul>
+              <li>Pilotage d'une squad de 5 développeurs sur une application SaaS de reporting financier.</li>
+              <li>Gestion des sprints, priorisation, accompagnement technique de l'équipe : bonnes pratiques, revues de code, performance.</li>
+              <li>Contribution produit : amélioration de l'UI, scalabilité, optimisation des performances.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">React</span>
+              <span class="chip">GraphQL</span><span class="chip">Docker</span><span class="chip">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">
+            2020 — 2024
+            <span class="dur">4 ans 2 mois</span>
+          </div>
+          <div>
+            <div class="co">Bellman</div>
+            <h3>Développeur Fullstack</h3>
+            <p class="where">Paris</p>
+            <p>
+              Solution complète pour les gestionnaires, comptables et fonctions support de copropriétés :
+              piloter l'ensemble d'un parc en simplifiant les processus quotidiens.
+            </p>
+            <ul>
+              <li>Équipe de 10 développeurs et product managers, organisée en feature squads.</li>
+              <li>Conception et implémentation de fonctionnalités critiques pour l'expérience utilisateur.</li>
+              <li>Participation active aux planifications et rétrospectives, dans une logique d'amélioration continue.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">React</span>
+              <span class="chip">GraphQL</span><span class="chip">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">
+            2018 — 2020
+            <span class="dur">1 an 10 mois</span>
+          </div>
+          <div>
+            <div class="co">Comet</div>
+            <h3>Développeur Fullstack</h3>
+            <p class="where">Paris</p>
+            <p>
+              Plateforme de mise en relation entre entreprises et freelances tech &amp; data.
+            </p>
+            <ul>
+              <li>Développement sur les trois applications : côté freelance, côté entreprise, back-office.</li>
+              <li>Feature squads d'une dizaine de développeurs et product managers.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Vue.js</span>
+              <span class="chip">GraphQL</span><span class="chip">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">
+            2017 — 2018
+            <span class="dur">9 mois</span>
+          </div>
+          <div>
+            <div class="co">Strada Capital</div>
+            <h3>Développeur iOS / Android</h3>
+            <p class="where">Laguna Hills, Californie</p>
+            <p>
+              Construction from scratch d'une application back-office iOS &amp; Android pour un
+              organisme de crédit américain.
+            </p>
+            <div class="chips">
+              <span class="chip">React Native</span><span class="chip">PHP</span><span class="chip">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">
+            2015 — 2016
+            <span class="dur">1 an 5 mois</span>
+          </div>
+          <div>
+            <div class="co">Simple &amp; New</div>
+            <h3>Développeur iOS</h3>
+            <p class="where">Boulogne-Billancourt</p>
+            <p>
+              Développement d'applications iOS en Swift et refonte d'anciennes applications Objective-C.
+            </p>
+            <div class="chips">
+              <span class="chip">Swift</span><span class="chip">Objective-C</span>
+              <span class="chip">PHP</span><span class="chip">Ruby on Rails</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="when">
+            2014 — 2017
+            <span class="dur">3 ans</span>
+          </div>
+          <div>
+            <div class="co">ISART Digital, Paris</div>
+            <h3>Master — Programmation informatique</h3>
+            <p class="where">Formation · Best Gameplay Award</p>
+            <p>
+              École de jeu vidéo. C'est de là que vient le réflexe de faire tourner une boucle avant
+              de la théoriser — et le tutoriel shoot'em up plus bas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="grid">
+      <div class="rail">
+        <b>03</b>
+        <span>Stack</span>
+      </div>
+      <div>
+        <h2>Les outils, classés par fréquence réelle</h2>
+        <p>
+          Pas de barres de progression à 87 % : ce qui compte, c'est ce que j'utilise toutes les
+          semaines et ce que j'ai déjà mené en production.
+        </p>
+
+        <div class="stack-row">
+          <div class="cat">Langages</div>
+          <div class="tags">
+            <span class="tag daily">TypeScript</span><span class="tag daily">JavaScript</span>
+            <span class="tag">SQL</span><span class="tag">Swift</span><span class="tag">PHP</span>
+            <span class="tag">Objective-C</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">Front</div>
+          <div class="tags">
+            <span class="tag daily">React</span><span class="tag">Vue.js</span>
+            <span class="tag daily">Design systems</span><span class="tag">React Native</span>
+            <span class="tag">Pixi.js</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">Back &amp; data</div>
+          <div class="tags">
+            <span class="tag daily">Node.js</span><span class="tag daily">GraphQL</span>
+            <span class="tag">REST</span><span class="tag">Prisma</span>
+            <span class="tag">PostgreSQL</span><span class="tag">Ruby on Rails</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">Infra &amp; delivery</div>
+          <div class="tags">
+            <span class="tag daily">Docker</span><span class="tag daily">AWS</span>
+            <span class="tag daily">CI/CD</span><span class="tag">Migrations legacy</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">IA au quotidien</div>
+          <div class="tags">
+            <span class="tag daily">Claude Code</span><span class="tag daily">Génération &amp; refacto</span>
+            <span class="tag daily">Tests assistés</span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="cat">Méthode</div>
+          <div class="tags">
+            <span class="tag daily">Feature squads</span><span class="tag daily">Revue de code</span>
+            <span class="tag daily">Estimation &amp; découpage</span><span class="tag">Mentorat</span>
+          </div>
+        </div>
+
+        <p class="legend"><i>Souligné</i> = utilisé chaque semaine. Le reste : mené en production, plus loin dans le temps.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <div class="grid">
+      <div class="rail">
+        <b>04</b>
+        <span>Projets</span>
+      </div>
+      <div>
+        <h2>Ce que je construis en dehors des heures</h2>
+
+        <a class="proj" href="https://github.com/Karzam/JS_Quiz/">
+          <div>
+            <h3>JS Quiz</h3>
+            <div class="meta"><span>2020</span><span>React · GraphQL · Prisma</span></div>
+          </div>
+          <div>
+            <p>
+              Un quiz JavaScript chronométré, client et serveur, avec sauvegarde des résultats.
+              Un prétexte assumé pour éprouver Prisma et une couche GraphQL de bout en bout.
+            </p>
+            <div class="meta"><span class="arrow">→ Code source sur GitHub</span></div>
+          </div>
+        </a>
+
+        <a class="proj" href="#ecrits">
+          <div>
+            <h3>Shoot'em up en JavaScript</h3>
+            <div class="meta"><span>2020</span><span>Pixi.js · Webpack</span></div>
+          </div>
+          <div>
+            <p>
+              La réécriture moderne d'un tutoriel publié sur Medium et Hackernoon, lu par plusieurs
+              milliers de développeurs. Deux parties, du canvas vide au vaisseau qui tire.
+            </p>
+            <div class="meta"><span class="arrow">→ Lire le tutoriel</span></div>
+          </div>
+        </a>
+
+        <a class="proj" href="https://github.com/Karzam/Blog">
+          <div>
+            <h3>baptistemenard.com</h3>
+            <div class="meta"><span>2020 → 2026</span><span>Gridsome → Astro</span></div>
+          </div>
+          <div>
+            <p>
+              Ce site. Écrit à l'origine sous Gridsome, aujourd'hui reconstruit : le contenu markdown
+              survit à la migration, la stack non.
+            </p>
+            <div class="meta"><span class="arrow">→ Code source sur GitHub</span></div>
+          </div>
+        </a>
+
+        <div class="proj slot">
+          <h3>Emplacement libre — un projet récent</h3>
+          <p>
+            Tes trois projets publics datent de 2020. Un projet 2025–2026, idéalement autour de l'IA
+            ou d'un produit SaaS, rendrait cette section cohérente avec le reste de la page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉCRITS -->
+  <section id="ecrits">
+    <div class="grid">
+      <div class="rail">
+        <b>05</b>
+        <span>Écrits</span>
+        <span>7 articles</span>
+      </div>
+      <div>
+        <h2>Le blog, conservé et remis en page</h2>
+        <p>
+          Les sept articles existants migrent tels quels : ce sont des fichiers markdown, ils ne
+          dépendent pas de Gridsome. Ils restent en anglais dans cette maquette, comme aujourd'hui.
+        </p>
+
+        <a class="post" href="#ecrits">
+          <span class="d">21.04.2020</span>
+          <span class="t">My favorite knowledge sources as a developer</span>
+          <span class="tg">knowledge</span>
+        </a>
+        <a class="post" href="#ecrits">
+          <span class="d">26.03.2020</span>
+          <span class="t">Building a quiz application with React.js, GraphQL and Prisma</span>
+          <span class="tg">react · graphql</span>
+        </a>
+        <a class="post" href="#ecrits">
+          <span class="d">12.03.2020</span>
+          <span class="t">Some useful ES6 tricks</span>
+          <span class="tg">javascript</span>
+        </a>
+        <a class="post" href="#ecrits">
+          <span class="d">11.03.2020</span>
+          <span class="t">Making a game with Javascript — Part 2</span>
+          <span class="tg">tutorial · game</span>
+        </a>
+        <a class="post" href="#ecrits">
+          <span class="d">09.03.2020</span>
+          <span class="t">Making a game with Javascript — Part 1</span>
+          <span class="tg">tutorial · game</span>
+        </a>
+        <a class="post" href="#ecrits">
+          <span class="d">27.02.2020</span>
+          <span class="t">Using Vue.js everyday</span>
+          <span class="tg">vue · javascript</span>
+        </a>
+        <a class="post" href="#ecrits">
+          <span class="d">25.02.2020</span>
+          <span class="t">Finally deployed!</span>
+          <span class="tg">misc</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="grid">
+      <div class="rail">
+        <b>06</b>
+        <span>Contact</span>
+      </div>
+      <div>
+        <h2>Les environnements qui m'intéressent</h2>
+        <p class="lead">
+          Ceux où les développeurs ont un vrai impact sur le produit, une autonomie technique réelle,
+          et où l'IA est un outil de travail plutôt qu'un slide. Si ça vous ressemble, écrivez-moi.
+        </p>
+
+        <div class="links">
+          <a href="mailto:bapmenard@gmail.com">
+            <span class="lbl">Email</span>
+            <span class="val">bapmenard@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/bap-menard/">
+            <span class="lbl">LinkedIn</span>
+            <span class="val">in/bap-menard</span>
+          </a>
+          <a href="https://github.com/Karzam">
+            <span class="lbl">GitHub</span>
+            <span class="val">@Karzam</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTES -->
+  <section class="notes" id="notes">
+    <div class="grid">
+      <div class="rail">
+        <b>↳</b>
+        <span>Notes de maquette</span>
+        <span>Ne fait pas partie du site</span>
+      </div>
+      <div>
+        <h2>Ce que tu dois valider avant de construire</h2>
+
+        <div class="note-block">
+          <h3>Tout ce qui est factuel vient de tes sources</h3>
+          <ul>
+            <li><b>De ton export LinkedIn :</b> intitulés, entreprises, dates, durées, localisations, descriptions d'entreprises, réalisations, stacks par poste, formation ISART, Best Gameplay Award, langues, liens.</li>
+            <li><b>De ton repo Gridsome :</b> les 7 articles avec leurs dates et tags, le projet JS_Quiz, le tutoriel shoot'em up Pixi.js.</li>
+            <li><b>Aucune métrique inventée.</b> Pas de « +40 % de performance » ni de « 2 M d'utilisateurs » : les seuls chiffres affichés (8 ans, 5 entreprises, squad de 5, équipe de 10) sont les tiens.</li>
+          </ul>
+        </div>
+
+        <div class="note-block">
+          <h3>Ce que j'ai rédigé et que tu dois relire</h3>
+          <ul>
+            <li>Le <b>titre principal</b> et les quatre blocs « ce que je fais » : reformulations de ton résumé LinkedIn, à ajuster à ta voix.</li>
+            <li>La ligne sur ISART (« faire tourner une boucle avant de la théoriser ») : c'est une interprétation de ma part, supprime-la si elle ne te ressemble pas.</li>
+            <li>Le <b>classement « utilisé chaque semaine »</b> de la stack : j'ai déduit, à toi de trancher. Prisma, PostgreSQL et Pixi.js viennent de tes projets perso, pas de ton LinkedIn.</li>
+            <li>« Lu par plusieurs milliers de développeurs » pour le tutoriel Hackernoon : ton article dit « lot of people », remplace par un chiffre réel ou reformule.</li>
+          </ul>
+        </div>
+
+        <div class="note-block">
+          <h3>Les trois décisions qui restent</h3>
+          <ul>
+            <li><b>Langue.</b> Cette maquette est en français, tes articles sont en anglais. Le mélange est incohérent : soit on passe tout en anglais (mieux pour la portée), soit on assume un site FR avec un blog EN, soit on fait du bilingue (plus de travail).</li>
+            <li><b>Stack.</b> Ma recommandation : <code>Astro + Tailwind</code>. Il reprend tes <code>content/posts/*.md</code> sans les toucher, génère du statique sans JS, et remplace Gridsome — qui n'est plus maintenu et te bloque sur Vue 2 / Node 12. Next.js reste pertinent si tu veux que le site démontre ta stack pro.</li>
+            <li><b>Le blog date de 2020.</b> Six ans de silence se voient. Soit tu republies (ton angle « Claude Code au quotidien » est un sujet évident et rare), soit on réduit la section à une archive discrète et le site devient un pur portfolio.</li>
+          </ul>
+        </div>
+
+        <div class="note-block">
+          <h3>Ce qui manque encore</h3>
+          <ul>
+            <li>Une <b>photo</b> — celle du site actuel a six ans.</li>
+            <li>Un <b>projet récent</b> pour la section Projets (l'emplacement libre plus haut).</li>
+            <li>Des <b>visuels de projets</b> : la page est volontairement typographique, mais deux ou trois captures la rendraient plus concrète.</li>
+            <li>Un <b>CV PDF</b> téléchargeable, si tu es en recherche active.</li>
+          </ul>
+        </div>
+
+        <footer>
+          <span>Maquette — aucune modification apportée à baptistemenard.com</span>
+          <span>Thème clair &amp; sombre · responsive</span>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('theme');
+  var stored = null;
+  try { stored = localStorage.getItem('bm-theme'); } catch (e) {}
+  if (stored === 'dark' || stored === 'light') root.setAttribute('data-theme', stored);
+
+  btn.addEventListener('click', function(){
+    var current = root.getAttribute('data-theme');
+    var isDark;
+    if (current === 'dark') isDark = true;
+    else if (current === 'light') isDark = false;
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('bm-theme', next); } catch (e) {}
+  });
+})();
+</script>
