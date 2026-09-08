@@ -5,19 +5,16 @@
 
 <style>
 :root{
-  --ground:#E8EAE6;
-  --surface:#F3F4F1;
-  --surface-2:#DEE2DC;
-  --ink:#141A17;
-  --ink-2:#3B453F;
-  --muted:#6C7772;
-  --rule:#C6CBC4;
-  --rule-soft:#D8DCD6;
-  --accent:#0E5C48;
-  --accent-ink:#0B4738;
-  --accent-wash:#D6E4DD;
-  --signal:#A44E17;
-  --shadow:rgba(20,26,23,.10);
+  --ground:#FFFFFF;
+  --surface:#F7F8FA;
+  --surface-2:#EDEFF2;
+  --ink:#16191E;
+  --ink-2:#3A414A;
+  --muted:#6B7480;
+  --rule:#D5D9DE;
+  --rule-soft:#E6E9EC;
+  --accent:#C2551E;
+  --signal:#35708C;
 
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --body:"Newsreader",Georgia,"Times New Roman",serif;
@@ -29,35 +26,29 @@
 
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --ground:#0D1210;
-    --surface:#141A17;
-    --surface-2:#1B2320;
-    --ink:#E7EBE7;
-    --ink-2:#B9C2BC;
-    --muted:#7F8A84;
-    --rule:#2A342F;
-    --rule-soft:#1E2622;
-    --accent:#5FD1AE;
-    --accent-ink:#8FE3C8;
-    --accent-wash:#14241E;
-    --signal:#DE9455;
-    --shadow:rgba(0,0,0,.5);
+    --ground:#101317;
+    --surface:#171B21;
+    --surface-2:#1E242B;
+    --ink:#E5E8EC;
+    --ink-2:#B4BCC6;
+    --muted:#7C8794;
+    --rule:#2A313A;
+    --rule-soft:#1E242B;
+    --accent:#F0813F;
+    --signal:#6FB4D4;
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0D1210;
-  --surface:#141A17;
-  --surface-2:#1B2320;
-  --ink:#E7EBE7;
-  --ink-2:#B9C2BC;
-  --muted:#7F8A84;
-  --rule:#2A342F;
-  --rule-soft:#1E2622;
-  --accent:#5FD1AE;
-  --accent-ink:#8FE3C8;
-  --accent-wash:#14241E;
-  --signal:#DE9455;
-  --shadow:rgba(0,0,0,.5);
+  --ground:#101317;
+  --surface:#171B21;
+  --surface-2:#1E242B;
+  --ink:#E5E8EC;
+  --ink-2:#B4BCC6;
+  --muted:#7C8794;
+  --rule:#2A313A;
+  --rule-soft:#1E242B;
+  --accent:#F0813F;
+  --signal:#6FB4D4;
 }
 
 *{box-sizing:border-box}
@@ -953,33 +944,35 @@ html{scroll-behavior:smooth}
       <div>
         <h2>Deux projets</h2>
 
-        <div class="proj">
+        <a class="proj" href="https://pulse-monitor.app">
           <div>
             <h3>Pulse</h3>
-            <div class="meta"><span class="todo">à compléter</span></div>
+            <div class="meta"><span>pulse-monitor.app</span><span class="todo">à compléter</span></div>
           </div>
           <div>
             <p class="ask">
-              Je n'ai aucune information sur Pulse — ni dans ton repo, ni dans ton export LinkedIn.
-              Dis-moi ce que fait le produit, pour qui, ce que tu y as construit précisément et avec
-              quelle stack, et je rédige les deux ou trois phrases qui vont ici.
+              Le lien est en place, le texte non : je n'ai pas pu ouvrir le site depuis cette session
+              (accès réseau refusé) et le projet n'apparaît ni dans ton repo ni dans ton export
+              LinkedIn. Dis-moi ce que fait Pulse, pour qui, et avec quelle stack.
             </p>
+            <div class="meta"><span class="arrow">→ pulse-monitor.app</span></div>
           </div>
-        </div>
+        </a>
 
-        <div class="proj">
+        <a class="proj" href="https://sight-ai.app">
           <div>
             <h3>Sight.ai</h3>
-            <div class="meta"><span class="todo">à compléter</span></div>
+            <div class="meta"><span>sight-ai.app</span><span class="todo">à compléter</span></div>
           </div>
           <div>
             <p class="ask">
-              Même chose pour Sight.ai. Vu le nom, j'imagine un produit autour de l'IA — c'est
-              exactement le projet qui donnerait du poids à ton positionnement « dev augmenté par
-              l'IA ». Raconte-moi, et précise s'il est public (lien, démo, dépôt).
+              Même chose. C'est le projet qui donnerait le plus de poids à ton positionnement
+              « développement augmenté par l'IA » : ce qu'il fait, ce que tu y as construit
+              précisément, et la stack.
             </p>
+            <div class="meta"><span class="arrow">→ sight-ai.app</span></div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -1032,7 +1025,7 @@ html{scroll-behavior:smooth}
           <ul>
             <li>Intitulés, entreprises, dates, durées, localisations, descriptions d'entreprises, réalisations, stacks par poste, formation ISART, Best Gameplay Award, liens.</li>
             <li><b>Aucune métrique inventée.</b> Pas de « +40 % de performance » ni de « 2 M d'utilisateurs » : les seuls chiffres affichés (8 ans, 5 entreprises, squad de 5, équipe de 10) sont les tiens.</li>
-            <li><b>Pulse et Sight.ai sont vides</b> — je n'ai aucune source sur ces deux projets. C'est le seul contenu manquant de la page, et c'est aussi le plus important : sans eux la section Projets ne tient pas.</li>
+            <li><b>Pulse et Sight.ai sont vides</b> — j'ai les URLs, pas le contenu : les deux domaines sont bloqués par la politique réseau de cette session, et les projets n'existent dans aucune de tes sources. C'est le seul contenu manquant de la page, et c'est le plus important : sans lui, la section Projets ne prouve rien.</li>
           </ul>
         </div>
 
@@ -1048,8 +1041,8 @@ html{scroll-behavior:smooth}
           <h3>Les décisions qui restent</h3>
           <ul>
             <li><b>Langue.</b> La maquette est en français. Ton audience de recruteurs tech est en partie anglophone, et ton titre LinkedIn est déjà en anglais — un site full EN porterait plus loin. À trancher.</li>
-            <li><b>Stack.</b> Sans blog, plus besoin d'un moteur de contenu : <code>Astro</code> seul (ou même du HTML/CSS bien tenu) suffit largement pour une page unique. Gridsome n'est plus maintenu et te bloque sur Vue 2 / Node 12, donc la migration reste justifiée — elle est juste devenue beaucoup plus simple.</li>
-            <li><b>Le repo.</b> Le blog supprimé, tes 7 articles et tout le pipeline markdown deviennent du code mort. Je les laisse dans l'historique git, mais dis-moi si tu veux aussi supprimer <code>content/posts/</code> ou garder les URLs vivantes pour ne pas casser les liens entrants.</li>
+            <li><b>Stack.</b> <code>Astro</code>. Gridsome n'est plus maintenu et te bloque sur Vue 2 / Node 12. Astro génère la page unique en statique et régénère les 7 pages d'articles à leurs URLs actuelles sans les lister nulle part — exactement ce que demande le point ci-dessous.</li>
+            <li><b>Les anciens articles restent en ligne mais invisibles.</b> Décidé : on garde les URLs <code>/post/:title</code> vivantes pour ne pas casser les liens entrants (Hackernoon, Medium, dev.to), sans aucun lien vers elles depuis le site. Conséquence sur la stack : le pipeline markdown reste nécessaire — <code>Astro</code> avec une collection de contenu non listée, plutôt qu'une page statique seule.</li>
           </ul>
         </div>
 
