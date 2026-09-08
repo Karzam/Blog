@@ -477,25 +477,23 @@ a.proj:hover h3{color:var(--accent)}
 .proj p{font-size:16px;margin:0}
 .proj .arrow{color:var(--accent);font-family:var(--mono)}
 
-.todo{
-  font-family:var(--mono);
-  font-size:10px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--signal);
-  border:1px solid var(--signal);
-  border-radius:2px;
-  padding:1px 6px;
-  white-space:nowrap;
-}
-.proj .ask{
-  color:var(--muted);
-  font-style:italic;
-  border-left:2px solid var(--signal);
-  padding-left:12px;
-  margin-top:10px;
+.proj ul{margin:12px 0 0;padding:0;list-style:none;max-width:62ch}
+.proj li{
+  position:relative;
+  padding-left:18px;
+  margin-bottom:7px;
   font-size:15.5px;
+  color:var(--ink-2);
 }
+.proj li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.72em;
+  width:7px;height:1px;
+  background:var(--accent);
+}
+.proj li:last-child{margin-bottom:0}
+.proj .live-dot{color:var(--accent)}
 
 /* ---------- writing ---------- */
 
@@ -626,7 +624,7 @@ html{scroll-behavior:smooth}
   <div class="wrap">
     <span class="dot">●</span>
     <span>MAQUETTE DE PROPOSITION — RIEN N'EST DÉPLOYÉ</span>
-    <span>Contenu tiré du profil LinkedIn — projets à compléter</span>
+    <span>Contenu tiré du profil LinkedIn et des dépôts Karzam/pulse et Karzam/sight-ai</span>
     <span>Notes &amp; arbitrages en bas de page ↓</span>
   </div>
 </div>
@@ -670,8 +668,8 @@ html{scroll-behavior:smooth}
             <dd>8 ans</dd>
           </div>
           <div>
-            <dt>Produits livrés</dt>
-            <dd>5 entreprises</dd>
+            <dt>Produits en ligne</dt>
+            <dd>2 en solo</dd>
           </div>
           <div>
             <dt>Stack de cœur</dt>
@@ -894,31 +892,33 @@ html{scroll-behavior:smooth}
         <div class="stack-row">
           <div class="cat">Front</div>
           <div class="tags">
-            <span class="tag daily">React</span><span class="tag">Vue.js</span>
-            <span class="tag daily">Design systems</span><span class="tag">React Native</span>
-            <span class="tag">Pixi.js</span>
+            <span class="tag daily">React</span><span class="tag daily">Next.js</span>
+            <span class="tag daily">Tailwind</span><span class="tag daily">Design systems</span>
+            <span class="tag">Vue.js</span><span class="tag">React Native</span>
           </div>
         </div>
         <div class="stack-row">
           <div class="cat">Back &amp; data</div>
           <div class="tags">
             <span class="tag daily">Node.js</span><span class="tag daily">GraphQL</span>
-            <span class="tag">REST</span><span class="tag">Prisma</span>
-            <span class="tag">PostgreSQL</span><span class="tag">Ruby on Rails</span>
+            <span class="tag daily">PostgreSQL</span><span class="tag daily">REST</span>
+            <span class="tag">AdonisJS</span><span class="tag">Supabase</span>
+            <span class="tag">BullMQ / Redis</span><span class="tag">Ruby on Rails</span>
           </div>
         </div>
         <div class="stack-row">
           <div class="cat">Infra &amp; delivery</div>
           <div class="tags">
             <span class="tag daily">Docker</span><span class="tag daily">AWS</span>
-            <span class="tag daily">CI/CD</span><span class="tag">Migrations legacy</span>
+            <span class="tag daily">CI/CD</span><span class="tag">Fly.io</span>
+            <span class="tag">Vercel</span><span class="tag">Migrations legacy</span>
           </div>
         </div>
         <div class="stack-row">
           <div class="cat">IA au quotidien</div>
           <div class="tags">
             <span class="tag daily">Claude Code</span><span class="tag daily">Génération &amp; refacto</span>
-            <span class="tag daily">Tests assistés</span>
+            <span class="tag daily">Tests assistés</span><span class="tag">API OpenAI</span>
           </div>
         </div>
         <div class="stack-row">
@@ -942,35 +942,65 @@ html{scroll-behavior:smooth}
         <span>Projets</span>
       </div>
       <div>
-        <h2>Deux projets</h2>
+        <h2>Deux produits en ligne</h2>
+        <p>Conçus, développés et déployés seul, du schéma de base de données à la mise en production.</p>
 
         <a class="proj" href="https://pulse-monitor.app">
           <div>
             <h3>Pulse</h3>
-            <div class="meta"><span>pulse-monitor.app</span><span class="todo">à compléter</span></div>
+            <div class="meta">
+              <span><span class="live-dot">●</span> pulse-monitor.app</span>
+              <span>2026</span>
+            </div>
           </div>
           <div>
-            <p class="ask">
-              Le lien est en place, le texte non : je n'ai pas pu ouvrir le site depuis cette session
-              (accès réseau refusé) et le projet n'apparaît ni dans ton repo ni dans ton export
-              LinkedIn. Dis-moi ce que fait Pulse, pour qui, et avec quelle stack.
+            <p>
+              Plateforme de supervision d'uptime pour les créateurs no-code. Pulse surveille les
+              endpoints HTTP et reçoit les signaux de vie des scénarios Make, Zapier, n8n et Bubble,
+              puis alerte par email, SMS ou webhook — avec un formatage Slack dédié — dès qu'un
+              service tombe.
             </p>
-            <div class="meta"><span class="arrow">→ pulse-monitor.app</span></div>
+            <ul>
+              <li>Deux modes de surveillance : appel HTTP périodique avec assertions JSON sur la réponse, et heartbeat entrant avec période de grâce pour les tâches planifiées.</li>
+              <li>Seuil d'échecs configurable avant déclenchement, pour éviter les fausses alertes, et notification de rétablissement.</li>
+              <li>Ordonnanceur et workers séparés du serveur HTTP, sur une file BullMQ / Redis.</li>
+              <li>Protection SSRF sur les URL surveillées, comparaison des jetons en temps constant, limitation de débit sur les routes publiques.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">AdonisJS 6</span><span class="chip">Next.js 16</span>
+              <span class="chip">TypeScript</span><span class="chip">PostgreSQL</span>
+              <span class="chip">BullMQ / Redis</span><span class="chip">Supabase Auth</span>
+              <span class="chip">Tailwind</span><span class="chip">Fly.io</span>
+            </div>
           </div>
         </a>
 
         <a class="proj" href="https://sight-ai.app">
           <div>
             <h3>Sight.ai</h3>
-            <div class="meta"><span>sight-ai.app</span><span class="todo">à compléter</span></div>
+            <div class="meta">
+              <span><span class="live-dot">●</span> sight-ai.app</span>
+              <span>2026</span>
+            </div>
           </div>
           <div>
-            <p class="ask">
-              Même chose. C'est le projet qui donnerait le plus de poids à ton positionnement
-              « développement augmenté par l'IA » : ce qu'il fait, ce que tu y as construit
-              précisément, et la stack.
+            <p>
+              Analyse de CV par IA pour recruteurs. On décrit le poste recherché, on dépose les CV
+              en PDF, et l'application note et classe chaque candidat selon sa correspondance avec
+              l'annonce.
             </p>
-            <div class="meta"><span class="arrow">→ sight-ai.app</span></div>
+            <ul>
+              <li>Critères pondérés : les critères importants donnent des points bonus, les critères éliminatoires plafonnent le score à 30.</li>
+              <li>Statistiques agrégées sur une campagne : distribution des scores, niveaux d'expérience, diplômes, compétences les plus représentées.</li>
+              <li>Aucun CV n'est persisté : l'extraction et l'analyse se font en mémoire, les données sont supprimées à la fin du traitement.</li>
+              <li>Analyse déportée dans des Edge Functions Supabase, interface bilingue français / anglais.</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Next.js 15</span><span class="chip">TypeScript</span>
+              <span class="chip">Supabase</span><span class="chip">Edge Functions</span>
+              <span class="chip">OpenAI</span><span class="chip">pdf.js</span>
+              <span class="chip">Tailwind</span><span class="chip">Vercel</span>
+            </div>
           </div>
         </a>
       </div>
@@ -1025,7 +1055,7 @@ html{scroll-behavior:smooth}
           <ul>
             <li>Intitulés, entreprises, dates, durées, localisations, descriptions d'entreprises, réalisations, stacks par poste, formation ISART, Best Gameplay Award, liens.</li>
             <li><b>Aucune métrique inventée.</b> Pas de « +40 % de performance » ni de « 2 M d'utilisateurs » : les seuls chiffres affichés (8 ans, 5 entreprises, squad de 5, équipe de 10) sont les tiens.</li>
-            <li><b>Pulse et Sight.ai sont vides</b> — j'ai les URLs, pas le contenu : les deux domaines sont bloqués par la politique réseau de cette session, et les projets n'existent dans aucune de tes sources. C'est le seul contenu manquant de la page, et c'est le plus important : sans lui, la section Projets ne prouve rien.</li>
+            <li><b>Des dépôts <code>Karzam/pulse</code> et <code>Karzam/sight-ai</code> :</b> fonctionnalités, stacks et choix d'architecture sont lus dans le code — le <code>CLAUDE.md</code> de Pulse, les fichiers de traduction et les Edge Functions de Sight.ai. Je n'ai pas pu ouvrir les deux sites en ligne, le réseau de cette session les bloque : rien ne vient de tes pages publiques.</li>
           </ul>
         </div>
 
@@ -1033,7 +1063,8 @@ html{scroll-behavior:smooth}
           <h3>Ce que j'ai rédigé et que tu dois relire</h3>
           <ul>
             <li>Le <b>titre principal</b> et les quatre blocs « ce que je fais » : reformulations de ton résumé LinkedIn, à ajuster à ta voix.</li>
-            <li>Le <b>classement « utilisé chaque semaine »</b> de la stack : j'ai déduit, à toi de trancher. Prisma, PostgreSQL et Pixi.js viennent de ton historique perso, pas de ton LinkedIn — dis-moi s'ils doivent rester maintenant que les projets 2020 ont sauté.</li>
+            <li>Le <b>classement « utilisé chaque semaine »</b> de la stack : déduit de ton LinkedIn et des deux dépôts. Next.js, Tailwind et PostgreSQL passent en « chaque semaine » parce que tes deux projets sont actifs — derniers commits mars et août 2026. Corrige si c'est faux.</li>
+            <li>Les <b>descriptions de Pulse et Sight.ai</b> : écrites depuis le code, donc techniquement exactes, mais c'est toi qui sais ce qui mérite la vitrine. J'ai retenu la double surveillance HTTP/heartbeat pour l'un, les critères pondérés et la non-persistance des CV pour l'autre.</li>
           </ul>
         </div>
 
@@ -1049,9 +1080,9 @@ html{scroll-behavior:smooth}
         <div class="note-block">
           <h3>Ce qui manque encore</h3>
           <ul>
-            <li>Le <b>contenu de Pulse et Sight.ai</b> — bloquant.</li>
             <li>Une <b>photo</b> — celle du site actuel a six ans.</li>
-            <li>Des <b>visuels de projets</b> : la page est volontairement typographique, mais deux ou trois captures la rendraient plus concrète.</li>
+            <li>Des <b>captures de Pulse et Sight.ai</b> : la page est volontairement typographique, mais deux captures d'écran rendraient les projets nettement plus concrets.</li>
+            <li>Des <b>chiffres d'usage</b>, si tu en as : utilisateurs, monitors actifs, CV analysés. C'est ce qui transformerait « deux produits » en « deux produits qui servent ».</li>
             <li>Un <b>CV PDF</b> téléchargeable, si tu es en recherche active.</li>
           </ul>
         </div>
