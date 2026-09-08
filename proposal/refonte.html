@@ -486,16 +486,25 @@ a.proj:hover h3{color:var(--accent)}
 .proj p{font-size:16px;margin:0}
 .proj .arrow{color:var(--accent);font-family:var(--mono)}
 
-.proj.slot{
-  border:1px dashed var(--rule);
-  border-radius:3px;
-  padding:24px 20px;
-  margin-top:22px;
-  background:transparent;
-  display:block;
+.todo{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--signal);
+  border:1px solid var(--signal);
+  border-radius:2px;
+  padding:1px 6px;
+  white-space:nowrap;
 }
-.proj.slot h3{color:var(--muted);font-stretch:100%;font-weight:700}
-.proj.slot p{color:var(--muted);margin-top:6px}
+.proj .ask{
+  color:var(--muted);
+  font-style:italic;
+  border-left:2px solid var(--signal);
+  padding-left:12px;
+  margin-top:10px;
+  font-size:15.5px;
+}
 
 /* ---------- writing ---------- */
 
@@ -626,7 +635,7 @@ html{scroll-behavior:smooth}
   <div class="wrap">
     <span class="dot">●</span>
     <span>MAQUETTE DE PROPOSITION — RIEN N'EST DÉPLOYÉ</span>
-    <span>Contenu tiré du profil LinkedIn + du repo Gridsome existant</span>
+    <span>Contenu tiré du profil LinkedIn — projets à compléter</span>
     <span>Notes &amp; arbitrages en bas de page ↓</span>
   </div>
 </div>
@@ -639,7 +648,6 @@ html{scroll-behavior:smooth}
       <a href="#parcours">Parcours</a>
       <a href="#stack" class="hide-sm">Stack</a>
       <a href="#projets">Projets</a>
-      <a href="#ecrits" class="hide-sm">Écrits</a>
       <a href="#contact">Contact</a>
       <button class="toggle" id="theme" type="button" aria-label="Basculer le thème">Thème</button>
     </nav>
@@ -658,12 +666,11 @@ html{scroll-behavior:smooth}
       </div>
       <div>
         <p class="kicker"><span class="live">●</span> Senior Product Engineer — Lead Developer chez NeoXam</p>
-        <h1>Je construis des produits <span class="hl">SaaS</span> — la spec, l'archi et le code.</h1>
+        <h1><span class="hl">Product engineer</span> fullstack, 8 ans d'expérience.</h1>
         <p class="lead">
-          Huit ans en startup à faire le trajet complet : challenger une spec avec le produit,
-          concevoir la solution, la découper, l'écrire, la mettre en prod. Aujourd'hui je pilote
-          une squad de cinq développeurs sur une application de reporting financier, et Claude Code
-          fait partie de mon outillage quotidien.
+          Lead Developer chez NeoXam depuis 2024, où je pilote une squad de 5 développeurs sur une
+          application SaaS de reporting financier. TypeScript, React, Node.js, AWS. J'utilise
+          Claude Code quotidiennement dans mon workflow de développement.
         </p>
 
         <dl class="facts">
@@ -697,43 +704,37 @@ html{scroll-behavior:smooth}
         <span>Ce que je fais</span>
       </div>
       <div>
-        <h2>Quatre casquettes, souvent dans la même semaine</h2>
-        <p>
-          Je ne me définis pas par un framework mais par l'endroit où je suis utile : entre l'intention
-          produit et le code qui tourne en production.
-        </p>
+        <h2>Quatre domaines d'intervention</h2>
+        <p>Du cadrage produit à la mise en production.</p>
 
         <div class="practice">
           <div>
             <h3><span class="num">A</span>Product engineering</h3>
             <p>
-              J'écris et je challenge les specs avec les équipes produit, je conçois les solutions,
-              je découpe et j'estime — puis je développe jusqu'à la mise en production. Le produit
-              n'est pas quelque chose qu'on me passe, c'est quelque chose que je construis avec.
+              J'écris et je challenge les specs avec les équipes produit. Je conçois les solutions,
+              je découpe et j'estime les sujets, puis je développe jusqu'à la mise en production.
             </p>
           </div>
           <div>
             <h3><span class="num">B</span>Développement augmenté par l'IA</h3>
             <p>
-              Claude Code est dans ma boucle quotidienne : concevoir, générer et refactorer du code,
-              écrire des tests, explorer plusieurs pistes avant d'en garder une. Ce n'est pas un gadget
-              de démo, c'est une vitesse d'itération différente.
+              J'utilise Claude Code quotidiennement : conception, génération et refactoring de code,
+              écriture de tests, exploration de plusieurs approches avant arbitrage.
             </p>
           </div>
           <div>
             <h3><span class="num">C</span>Architecture &amp; infrastructure</h3>
             <p>
-              Conception et évolution d'applications cloud dockerisées, structuration des processus
-              de déploiement, et migrations complexes : applications legacy, architectures backend,
-              refontes de design systems front.
+              Conception et évolution d'applications cloud dockerisées. Structuration des processus
+              de déploiement. Migrations d'applications legacy, d'architectures backend et
+              d'infrastructures. Refontes de design systems frontend.
             </p>
           </div>
           <div>
             <h3><span class="num">D</span>Leadership technique</h3>
             <p>
               Accompagnement des développeurs moins expérimentés, revues de code, partage de pratiques.
-              Je pilote une squad de cinq personnes sans quitter le clavier — le lead qui ne code plus
-              perd vite le contact avec ce qu'il demande.
+              Je pilote une squad de 5 personnes tout en restant hands-on.
             </p>
           </div>
         </div>
@@ -750,7 +751,7 @@ html{scroll-behavior:smooth}
         <span>2015 → 2026</span>
       </div>
       <div>
-        <h2>Du dev iOS au lead product engineer</h2>
+        <h2>Cinq postes depuis 2015</h2>
 
         <div class="role">
           <div class="when">
@@ -873,10 +874,7 @@ html{scroll-behavior:smooth}
             <div class="co">ISART Digital, Paris</div>
             <h3>Master — Programmation informatique</h3>
             <p class="where">Formation · Best Gameplay Award</p>
-            <p>
-              École de jeu vidéo. C'est de là que vient le réflexe de faire tourner une boucle avant
-              de la théoriser — et le tutoriel shoot'em up plus bas.
-            </p>
+            <p>École de jeu vidéo. Master en programmation informatique.</p>
           </div>
         </div>
       </div>
@@ -891,11 +889,8 @@ html{scroll-behavior:smooth}
         <span>Stack</span>
       </div>
       <div>
-        <h2>Les outils, classés par fréquence réelle</h2>
-        <p>
-          Pas de barres de progression à 87 % : ce qui compte, c'est ce que j'utilise toutes les
-          semaines et ce que j'ai déjà mené en production.
-        </p>
+        <h2>Stack, classée par fréquence d'usage</h2>
+        <p>La distinction porte sur la fréquence d'utilisation, pas sur un niveau auto-évalué.</p>
 
         <div class="stack-row">
           <div class="cat">Langages</div>
@@ -943,7 +938,7 @@ html{scroll-behavior:smooth}
           </div>
         </div>
 
-        <p class="legend"><i>Souligné</i> = utilisé chaque semaine. Le reste : mené en production, plus loin dans le temps.</p>
+        <p class="legend"><i>Souligné</i> : utilisé chaque semaine. Le reste : utilisé en production, plus loin dans le temps.</p>
       </div>
     </div>
   </section>
@@ -956,111 +951,35 @@ html{scroll-behavior:smooth}
         <span>Projets</span>
       </div>
       <div>
-        <h2>Ce que je construis en dehors des heures</h2>
+        <h2>Deux projets</h2>
 
-        <a class="proj" href="https://github.com/Karzam/JS_Quiz/">
+        <div class="proj">
           <div>
-            <h3>JS Quiz</h3>
-            <div class="meta"><span>2020</span><span>React · GraphQL · Prisma</span></div>
+            <h3>Pulse</h3>
+            <div class="meta"><span class="todo">à compléter</span></div>
           </div>
           <div>
-            <p>
-              Un quiz JavaScript chronométré, client et serveur, avec sauvegarde des résultats.
-              Un prétexte assumé pour éprouver Prisma et une couche GraphQL de bout en bout.
+            <p class="ask">
+              Je n'ai aucune information sur Pulse — ni dans ton repo, ni dans ton export LinkedIn.
+              Dis-moi ce que fait le produit, pour qui, ce que tu y as construit précisément et avec
+              quelle stack, et je rédige les deux ou trois phrases qui vont ici.
             </p>
-            <div class="meta"><span class="arrow">→ Code source sur GitHub</span></div>
           </div>
-        </a>
-
-        <a class="proj" href="#ecrits">
-          <div>
-            <h3>Shoot'em up en JavaScript</h3>
-            <div class="meta"><span>2020</span><span>Pixi.js · Webpack</span></div>
-          </div>
-          <div>
-            <p>
-              La réécriture moderne d'un tutoriel publié sur Medium et Hackernoon, lu par plusieurs
-              milliers de développeurs. Deux parties, du canvas vide au vaisseau qui tire.
-            </p>
-            <div class="meta"><span class="arrow">→ Lire le tutoriel</span></div>
-          </div>
-        </a>
-
-        <a class="proj" href="https://github.com/Karzam/Blog">
-          <div>
-            <h3>baptistemenard.com</h3>
-            <div class="meta"><span>2020 → 2026</span><span>Gridsome → Astro</span></div>
-          </div>
-          <div>
-            <p>
-              Ce site. Écrit à l'origine sous Gridsome, aujourd'hui reconstruit : le contenu markdown
-              survit à la migration, la stack non.
-            </p>
-            <div class="meta"><span class="arrow">→ Code source sur GitHub</span></div>
-          </div>
-        </a>
-
-        <div class="proj slot">
-          <h3>Emplacement libre — un projet récent</h3>
-          <p>
-            Tes trois projets publics datent de 2020. Un projet 2025–2026, idéalement autour de l'IA
-            ou d'un produit SaaS, rendrait cette section cohérente avec le reste de la page.
-          </p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ÉCRITS -->
-  <section id="ecrits">
-    <div class="grid">
-      <div class="rail">
-        <b>05</b>
-        <span>Écrits</span>
-        <span>7 articles</span>
-      </div>
-      <div>
-        <h2>Le blog, conservé et remis en page</h2>
-        <p>
-          Les sept articles existants migrent tels quels : ce sont des fichiers markdown, ils ne
-          dépendent pas de Gridsome. Ils restent en anglais dans cette maquette, comme aujourd'hui.
-        </p>
-
-        <a class="post" href="#ecrits">
-          <span class="d">21.04.2020</span>
-          <span class="t">My favorite knowledge sources as a developer</span>
-          <span class="tg">knowledge</span>
-        </a>
-        <a class="post" href="#ecrits">
-          <span class="d">26.03.2020</span>
-          <span class="t">Building a quiz application with React.js, GraphQL and Prisma</span>
-          <span class="tg">react · graphql</span>
-        </a>
-        <a class="post" href="#ecrits">
-          <span class="d">12.03.2020</span>
-          <span class="t">Some useful ES6 tricks</span>
-          <span class="tg">javascript</span>
-        </a>
-        <a class="post" href="#ecrits">
-          <span class="d">11.03.2020</span>
-          <span class="t">Making a game with Javascript — Part 2</span>
-          <span class="tg">tutorial · game</span>
-        </a>
-        <a class="post" href="#ecrits">
-          <span class="d">09.03.2020</span>
-          <span class="t">Making a game with Javascript — Part 1</span>
-          <span class="tg">tutorial · game</span>
-        </a>
-        <a class="post" href="#ecrits">
-          <span class="d">27.02.2020</span>
-          <span class="t">Using Vue.js everyday</span>
-          <span class="tg">vue · javascript</span>
-        </a>
-        <a class="post" href="#ecrits">
-          <span class="d">25.02.2020</span>
-          <span class="t">Finally deployed!</span>
-          <span class="tg">misc</span>
-        </a>
+        <div class="proj">
+          <div>
+            <h3>Sight.ai</h3>
+            <div class="meta"><span class="todo">à compléter</span></div>
+          </div>
+          <div>
+            <p class="ask">
+              Même chose pour Sight.ai. Vu le nom, j'imagine un produit autour de l'IA — c'est
+              exactement le projet qui donnerait du poids à ton positionnement « dev augmenté par
+              l'IA ». Raconte-moi, et précise s'il est public (lien, démo, dépôt).
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1069,14 +988,14 @@ html{scroll-behavior:smooth}
   <section id="contact">
     <div class="grid">
       <div class="rail">
-        <b>06</b>
+        <b>05</b>
         <span>Contact</span>
       </div>
       <div>
-        <h2>Les environnements qui m'intéressent</h2>
+        <h2>Contact</h2>
         <p class="lead">
-          Ceux où les développeurs ont un vrai impact sur le produit, une autonomie technique réelle,
-          et où l'IA est un outil de travail plutôt qu'un slide. Si ça vous ressemble, écrivez-moi.
+          Je m'intéresse aux environnements où les développeurs ont un impact sur le produit, une
+          autonomie technique réelle, et où l'IA est un outil de développement quotidien.
         </p>
 
         <div class="links">
@@ -1109,11 +1028,11 @@ html{scroll-behavior:smooth}
         <h2>Ce que tu dois valider avant de construire</h2>
 
         <div class="note-block">
-          <h3>Tout ce qui est factuel vient de tes sources</h3>
+          <h3>Tout ce qui est factuel vient de ton export LinkedIn</h3>
           <ul>
-            <li><b>De ton export LinkedIn :</b> intitulés, entreprises, dates, durées, localisations, descriptions d'entreprises, réalisations, stacks par poste, formation ISART, Best Gameplay Award, langues, liens.</li>
-            <li><b>De ton repo Gridsome :</b> les 7 articles avec leurs dates et tags, le projet JS_Quiz, le tutoriel shoot'em up Pixi.js.</li>
+            <li>Intitulés, entreprises, dates, durées, localisations, descriptions d'entreprises, réalisations, stacks par poste, formation ISART, Best Gameplay Award, liens.</li>
             <li><b>Aucune métrique inventée.</b> Pas de « +40 % de performance » ni de « 2 M d'utilisateurs » : les seuls chiffres affichés (8 ans, 5 entreprises, squad de 5, équipe de 10) sont les tiens.</li>
+            <li><b>Pulse et Sight.ai sont vides</b> — je n'ai aucune source sur ces deux projets. C'est le seul contenu manquant de la page, et c'est aussi le plus important : sans eux la section Projets ne tient pas.</li>
           </ul>
         </div>
 
@@ -1121,26 +1040,24 @@ html{scroll-behavior:smooth}
           <h3>Ce que j'ai rédigé et que tu dois relire</h3>
           <ul>
             <li>Le <b>titre principal</b> et les quatre blocs « ce que je fais » : reformulations de ton résumé LinkedIn, à ajuster à ta voix.</li>
-            <li>La ligne sur ISART (« faire tourner une boucle avant de la théoriser ») : c'est une interprétation de ma part, supprime-la si elle ne te ressemble pas.</li>
-            <li>Le <b>classement « utilisé chaque semaine »</b> de la stack : j'ai déduit, à toi de trancher. Prisma, PostgreSQL et Pixi.js viennent de tes projets perso, pas de ton LinkedIn.</li>
-            <li>« Lu par plusieurs milliers de développeurs » pour le tutoriel Hackernoon : ton article dit « lot of people », remplace par un chiffre réel ou reformule.</li>
+            <li>Le <b>classement « utilisé chaque semaine »</b> de la stack : j'ai déduit, à toi de trancher. Prisma, PostgreSQL et Pixi.js viennent de ton historique perso, pas de ton LinkedIn — dis-moi s'ils doivent rester maintenant que les projets 2020 ont sauté.</li>
           </ul>
         </div>
 
         <div class="note-block">
-          <h3>Les trois décisions qui restent</h3>
+          <h3>Les décisions qui restent</h3>
           <ul>
-            <li><b>Langue.</b> Cette maquette est en français, tes articles sont en anglais. Le mélange est incohérent : soit on passe tout en anglais (mieux pour la portée), soit on assume un site FR avec un blog EN, soit on fait du bilingue (plus de travail).</li>
-            <li><b>Stack.</b> Ma recommandation : <code>Astro + Tailwind</code>. Il reprend tes <code>content/posts/*.md</code> sans les toucher, génère du statique sans JS, et remplace Gridsome — qui n'est plus maintenu et te bloque sur Vue 2 / Node 12. Next.js reste pertinent si tu veux que le site démontre ta stack pro.</li>
-            <li><b>Le blog date de 2020.</b> Six ans de silence se voient. Soit tu republies (ton angle « Claude Code au quotidien » est un sujet évident et rare), soit on réduit la section à une archive discrète et le site devient un pur portfolio.</li>
+            <li><b>Langue.</b> La maquette est en français. Ton audience de recruteurs tech est en partie anglophone, et ton titre LinkedIn est déjà en anglais — un site full EN porterait plus loin. À trancher.</li>
+            <li><b>Stack.</b> Sans blog, plus besoin d'un moteur de contenu : <code>Astro</code> seul (ou même du HTML/CSS bien tenu) suffit largement pour une page unique. Gridsome n'est plus maintenu et te bloque sur Vue 2 / Node 12, donc la migration reste justifiée — elle est juste devenue beaucoup plus simple.</li>
+            <li><b>Le repo.</b> Le blog supprimé, tes 7 articles et tout le pipeline markdown deviennent du code mort. Je les laisse dans l'historique git, mais dis-moi si tu veux aussi supprimer <code>content/posts/</code> ou garder les URLs vivantes pour ne pas casser les liens entrants.</li>
           </ul>
         </div>
 
         <div class="note-block">
           <h3>Ce qui manque encore</h3>
           <ul>
+            <li>Le <b>contenu de Pulse et Sight.ai</b> — bloquant.</li>
             <li>Une <b>photo</b> — celle du site actuel a six ans.</li>
-            <li>Un <b>projet récent</b> pour la section Projets (l'emplacement libre plus haut).</li>
             <li>Des <b>visuels de projets</b> : la page est volontairement typographique, mais deux ou trois captures la rendraient plus concrète.</li>
             <li>Un <b>CV PDF</b> téléchargeable, si tu es en recherche active.</li>
           </ul>
